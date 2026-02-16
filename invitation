@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation - Eva & Samuel</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --rose-prestige: #d4a5a5;
+            --white-cream: #fffdf9;
+            --text-gray: #5a5a5a;
+            --text-dark: #333333;
+            --line-color: rgba(212, 165, 165, 0.3);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--white-cream);
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Empêche le scroll horizontal sur mobile */
+        }
+
+        /* --- ÉLÉMENTS FLORAUX --- */
+        .bg-flower-left {
+            position: fixed;
+            top: 0;
+            left: -20px;
+            width: 200px; /* Plus petit par défaut */
+            opacity: 0.5;
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .bg-flower-right {
+            position: fixed;
+            bottom: 0;
+            right: -20px;
+            width: 220px;
+            opacity: 0.5;
+            z-index: 2000;
+            pointer-events: none;
+            transform: rotate(-10deg);
+        }
+
+        /* Barre de Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px; /* Réduit pour mobile */
+            background-color: rgba(255, 253, 249, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1500;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.65rem;
+            transition: 0.3s;
+        }
+
+        /* Conteneur */
+        .page-wrapper {
+            box-sizing: border-box;
+            padding: 80px 15px 40px 15px; /* Marges réduites mobile */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-frame {
+            width: 100%;
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .wedding-logo { width: 70px; margin-bottom: 15px; }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            color: var(--rose-prestige);
+            margin: 5px 0;
+        }
+
+        .hero-photo, .section-photo {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 20px 0;
+            border: 1px solid var(--line-color);
+            padding: 8px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .main-message {
+            max-width: 550px;
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            line-height: 1.5;
+            font-style: italic;
+            margin: 15px 0 40px 0;
+            padding: 0 10px;
+        }
+
+        /* Cards */
+        .event-card {
+            background: white;
+            border: 1px solid var(--rose-prestige);
+            padding: 30px 20px;
+            margin: 15px 0;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('droite.JPG');
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            background-size: 100px; /* Plus petit sur mobile */
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 253, 249, 0.85);
+            z-index: 0;
+        }
+
+        .event-card > * { position: relative; z-index: 1; }
+
+        /* Formulaire */
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .form-group { margin-bottom: 15px; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--line-color);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            border-radius: 0;
+        }
+
+        .btn-rsvp {
+            background: var(--text-dark);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        /* AJUSTEMENTS ORDINATEUR */
+        @media (min-width: 768px) {
+            .navbar { height: 80px; }
+            .nav-links { gap: 30px; }
+            .nav-links a { font-size: 0.75rem; letter-spacing: 2px; }
+            .bg-flower-left { width: 300px; left: -50px; }
+            .bg-flower-right { width: 350px; right: -50px; }
+            .event-card { padding: 40px; background-size: 180px; }
+            .page-wrapper { padding: 120px 20px 60px 20px; }
+            .wedding-logo { width: 85px; }
+        }
+    </style>
+</head>
+<body>
+
+<img src="doublefleur.JPG" class="bg-flower-left" alt="">
+<img src="fleur.JPG" class="bg-flower-right" alt="">
+
+<nav class="navbar">
+    <ul class="nav-links">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#mairie">Mairie</a></li>
+        <li><a href="#houppa">Houppa</a></li>
+        <li><a href="#rsvp">Présence</a></li>
+    </ul>
+</nav>
+
+<div class="page-wrapper" id="accueil">
+    <div class="main-frame">
+        <img src="logo.JPG" alt="Logo ES" class="wedding-logo">
+        <h1 class="names">Eva & Samuel</h1>
+
+        <img src="nez.JPG" alt="Eva & Samuel" class="hero-photo">
+
+        <div class="main-message">
+            "C’est avec un immense bonheur que nous vous invitons à célébrer notre union. Nous avons hâte de partager ce moment unique avec vous."
+        </div>
+
+        <div class="event-card" id="mairie">
+            <div style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px;">La Mairie</div>
+            <div style="font-size: 1.3rem; font-style: italic; margin-bottom: 10px;">11 Mai 2026 à 14h30</div>
+            <p style="margin: 0;">Mairie du 16ème, Paris.</p>
+        </div>
+
+        <div class="event-card" id="houppa">
+            <div style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px;">La Houppa</div>
+            <div style="font-size: 1.3rem; font-style: italic; margin-bottom: 10px;">12 Mai 2026 à 17h00</div>
+            <p style="margin: 0;">Célébration de notre union.</p>
+        </div>
+
+        <img src="verre.JPG" alt="Célébration" class="section-photo">
+
+        <div class="form-container" id="rsvp">
+            <h2 style="text-align: center; letter-spacing: 3px; text-transform: uppercase; font-size: 1rem; margin-bottom: 25px;">Confirmer ma présence</h2>
+            <form>
+                <div class="form-group">
+                    <label style="display:block; font-size:0.7rem; margin-bottom:5px; letter-spacing: 1px;">NOM & PRÉNOM</label>
+                    <input type="text" placeholder="Votre nom complet" required>
+                </div>
+                <div class="form-group">
+                    <label style="display:block; font-size:0.7rem; margin-bottom:5px; letter-spacing: 1px;">PRÉSENCE</label>
+                    <select required>
+                        <option value="oui">Oui, avec plaisir</option>
+                        <option value="non">Non, avec regret</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-rsvp">Envoyer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
