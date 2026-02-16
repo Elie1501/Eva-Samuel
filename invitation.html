@@ -13,11 +13,10 @@
             --white-cream: #fffdf9;
             --text-gray: #5a5a5a;
             --text-dark: #333333;
-            --line-color: rgba(212, 165, 165, 0.25);
+            --line-color: rgba(212, 165, 165, 0.4);
         }
 
-        /* RESET MOBILE */
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { box-sizing: border-box; }
 
         html, body {
             margin: 0;
@@ -26,57 +25,56 @@
             min-height: 100%;
             background-color: var(--white-cream);
             font-family: 'Cormorant Garamond', serif;
-            color: var(--text-dark);
         }
 
-        /* --- FOND CONTINU : CORRECTIF MOBILE --- */
+        /* --- FOND CONTINU FORCÉ --- */
         #fixed-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            /* On utilise une div séparée pour éviter les bugs de scroll Safari */
-            background-image: url('continue.JPG'); 
+            width: 100%;
+            height: 100%;
+            background-image: url('fond.JPG');
             background-repeat: repeat;
-            background-size: 180px; 
-            opacity: 0.18;
-            z-index: -1;
+            background-size: 250px;
+            opacity: 0.25; /* Augmenté pour être sûr de le voir */
+            z-index: 0; /* Placé juste au-dessus du fond blanc */
             pointer-events: none;
-            display: block !important;
         }
 
+        /* NAVIGATION */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
             height: 60px;
-            background-color: rgba(255, 253, 249, 0.96);
+            background-color: rgba(255, 253, 249, 0.98);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             border-bottom: 1px solid var(--line-color);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(5px);
         }
 
-        .nav-links { display: flex; gap: 12px; list-style: none; padding: 0; margin: 0; }
-        .nav-links a { text-decoration: none; color: var(--text-gray); text-transform: uppercase; font-size: 0.65rem; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 15px; list-style: none; padding: 0; }
+        .nav-links a { text-decoration: none; color: var(--text-gray); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
 
+        /* CONTENU */
         .page-wrapper {
+            position: relative;
+            z-index: 10; /* Le contenu passe au-dessus du fond */
             padding: 90px 15px 40px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
         }
 
         .main-frame { width: 100%; max-width: 600px; text-align: center; }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(3.2rem, 12vw, 5.5rem);
+            font-size: clamp(3.5rem, 12vw, 5.5rem);
             color: var(--rose-prestige);
             margin: 10px 0;
         }
@@ -84,50 +82,40 @@
         .hero-photo, .section-photo {
             width: 100%;
             max-width: 500px;
-            border: 1px solid var(--line-color);
-            padding: 6px;
-            background: #ffffff;
+            border: 2px solid white;
+            padding: 5px;
+            background: white;
             margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* --- CARDS : CORRECTIF BORDURES & IMAGE DROITE --- */
+        /* --- CARDS AVEC droite.JPG --- */
         .event-card {
-            background-color: #ffffff;
-            border: 2px solid var(--rose-prestige) !important; /* Force la bordure */
-            padding: 30px 20px;
-            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-opaque */
+            border: 2px solid var(--rose-prestige);
+            padding: 35px 20px;
+            margin: 25px 0;
             width: 100%;
             position: relative;
             overflow: hidden;
-            /* Forcer l'affichage de droite.JPG */
-            background-image: url('droite.JPG') !important;
-            background-repeat: no-repeat !important;
-            background-position: bottom -10px right -10px !important;
-            background-size: 130px !important;
-        }
-
-        /* Voile blanc pour assurer la lecture du texte sur l'image droite.JPG */
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255, 255, 255, 0.88);
-            z-index: 1;
+            /* On force l'image droite.JPG */
+            background-image: url('droite.JPG');
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            background-size: 150px;
         }
 
         .event-card > * { position: relative; z-index: 2; }
 
-        .form-container { width: 100%; margin-top: 30px; text-align: left; }
+        /* FORMULAIRE */
+        .form-container { width: 100%; margin-top: 30px; }
         input, select {
             width: 100%;
             padding: 14px;
             border: 1px solid var(--line-color);
-            font-family: 'Cormorant Garamond', serif;
             margin-bottom: 15px;
-            border-radius: 0;
-            font-size: 16px; /* Évite le zoom automatique sur iPhone */
-            -webkit-appearance: none;
+            font-size: 16px;
+            background: white;
         }
 
         .btn-rsvp {
@@ -137,72 +125,64 @@
             padding: 16px;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 2px;
             font-weight: bold;
         }
 
         @media (min-width: 768px) {
-            .navbar { height: 80px; }
-            .nav-links { gap: 30px; }
-            .nav-links a { font-size: 0.8rem; }
+            #fixed-bg { background-size: 400px; }
             .main-frame { max-width: 800px; }
-            #fixed-bg { background-size: 250px; opacity: 0.12; }
         }
     </style>
 </head>
 <body>
 
-    <div id="fixed-bg"></div>
+<div id="fixed-bg"></div>
 
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#mairie">Mairie</a></li>
-            <li><a href="#houppa">Houppa</a></li>
-            <li><a href="#rsvp">Présence</a></li>
-        </ul>
-    </nav>
+<nav class="navbar">
+    <ul class="nav-links">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#mairie">Mairie</a></li>
+        <li><a href="#houppa">Houppa</a></li>
+        <li><a href="#rsvp">Présence</a></li>
+    </ul>
+</nav>
 
-    <div class="page-wrapper" id="accueil">
-        <div class="main-frame">
-            <img src="logo.JPG" alt="Logo" style="width: 70px; height: auto;">
-            
-            <h1 class="names">Eva & Samuel</h1>
+<div class="page-wrapper" id="accueil">
+    <div class="main-frame">
+        <img src="logo.JPG" alt="Logo" style="width: 80px;">
 
-            <img src="nez.JPG" alt="Eva & Samuel" class="hero-photo">
+        <h1 class="names">Eva & Samuel</h1>
 
-            <p style="font-size: 1.3rem; font-style: italic; line-height: 1.6; margin: 20px 0;">
-                "C’est avec un immense bonheur que nous vous invitons à célébrer notre union."
-            </p>
+        <img src="nez.JPG" alt="Eva & Samuel" class="hero-photo">
 
-            <div class="event-card" id="mairie">
-                <span style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">La Mairie</span>
-                <h2 style="font-size: 1.5rem; margin: 10px 0;">11 Mai 2026 • 14h30</h2>
-                <p>Mairie du 16ème, Paris</p>
-            </div>
+        <div class="event-card" id="mairie">
+            <h2 style="font-size: 1.6rem; margin: 0;">La Mairie</h2>
+            <p style="font-style: italic;">11 Mai 2026 • 14h30</p>
+            <p>Mairie du 16ème, Paris</p>
+        </div>
 
-            <div class="event-card" id="houppa">
-                <span style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">La Houppa</span>
-                <h2 style="font-size: 1.5rem; margin: 10px 0;">12 Mai 2026 • 17h00</h2>
-                <p>Sous le ciel de Paris</p>
-            </div>
+        <div class="event-card" id="houppa">
+            <h2 style="font-size: 1.6rem; margin: 0;">La Houppa</h2>
+            <p style="font-style: italic;">12 Mai 2026 • 17h00</p>
+            <p>Célébration religieuse</p>
+        </div>
 
-            <img src="verre.JPG" alt="Célébration" class="section-photo">
+        <img src="verre.JPG" alt="Célébration" class="section-photo">
 
-            <div class="form-container" id="rsvp">
-                <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 2px;">Votre Présence</h3>
-                <form>
-                    <input type="text" placeholder="Nom & Prénom" required>
-                    <select required>
-                        <option value="" disabled selected>Serez-vous présent ?</option>
-                        <option value="oui">Oui, avec joie</option>
-                        <option value="non">Non, avec regret</option>
-                    </select>
-                    <button type="submit" class="btn-rsvp">Envoyer</button>
-                </form>
-            </div>
+        <div class="form-container" id="rsvp">
+            <h3 style="text-transform: uppercase; letter-spacing: 2px;">Confirmer ma présence</h3>
+            <form>
+                <input type="text" placeholder="Nom & Prénom" required>
+                <select required>
+                    <option value="" disabled selected>Participerez-vous ?</option>
+                    <option value="oui">Oui, avec joie</option>
+                    <option value="non">Non, avec regret</option>
+                </select>
+                <button type="submit" class="btn-rsvp">Envoyer</button>
+            </form>
         </div>
     </div>
+</div>
 
 </body>
 </html>
