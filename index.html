@@ -3,199 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eva & Samuel</title>
-    
+    <title>Eva & Samuel - 12 Mai 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --rose-signature: #e2b4b4;
             --rose-pale: rgba(226, 180, 180, 0.25);
             --white-soft: rgba(255, 255, 255, 0.95);
         }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            font-family: 'Cormorant Garamond', serif;
-            background-color: #000;
-            overflow: hidden;
-        }
-
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: 'Cormorant Garamond', serif; background-color: #000; overflow: hidden; }
         .background-hero {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('bisous.JPG') no-repeat;
-            background-position: center 20%; 
-            transform: scale(1.1);
-            background-size: cover;
-            z-index: 1;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('bisous.JPG') no-repeat center 20%; background-size: cover;
+            transform: scale(1.1); z-index: 1;
         }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.35); 
-            z-index: 2;
-        }
-
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.35); z-index: 2; }
         .main-container {
-            position: relative;
-            z-index: 10;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
+            position: relative; z-index: 10; height: 100vh; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; color: white; padding: 0 20px;
         }
-
-        .names {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(4rem, 14vw, 8rem);
-            color: var(--rose-signature);
-            margin: 0;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
-        }
-
-        .date-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.3rem, 5vw, 1.8rem);
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin: 10px 0 40px 0;
-            font-weight: 700; /* Plus gras pour la visibilité */
-            color: #fff;
-            text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
-        }
-
-        .countdown {
-            display: flex;
-            gap: clamp(12px, 4vw, 30px);
-            margin-bottom: 55px;
-            justify-content: center;
-        }
-
+        .names { font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 14vw, 8rem); color: var(--rose-signature); text-shadow: 2px 2px 15px rgba(0,0,0,0.6); margin: 0; }
+        .date-text { font-weight: 700; letter-spacing: 6px; text-transform: uppercase; margin: 10px 0 40px 0; font-size: clamp(1.3rem, 5vw, 1.8rem); text-shadow: 1px 1px 10px rgba(0,0,0,0.5); }
+        .countdown { display: flex; gap: clamp(12px, 4vw, 30px); margin-bottom: 55px; }
         .unit {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: var(--rose-pale);
-            border: 1px solid rgba(226, 180, 180, 0.5);
-            width: clamp(75px, 20vw, 100px);
-            height: clamp(75px, 20vw, 100px);
-            border-radius: 5px;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: var(--rose-pale); border: 1px solid rgba(226, 180, 180, 0.5);
+            width: clamp(75px, 20vw, 100px); height: clamp(75px, 20vw, 100px);
+            border-radius: 5px; backdrop-filter: blur(6px);
         }
-
-        .unit span {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.8rem, 6vw, 2.6rem);
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .unit label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 6px;
-            font-weight: 600; /* Plus gras */
-            opacity: 1; /* Pleine opacité */
-        }
-
+        .unit span { font-size: clamp(1.8rem, 6vw, 2.6rem); font-weight: 700; }
+        .unit label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; font-weight: 600; }
         .next-btn {
-            background: none;
-            border: 1px solid var(--white-soft);
-            color: white;
-            padding: 16px 55px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem; /* Légèrement plus grand */
-            font-weight: 700; /* Plus gras */
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border-radius: 2px;
-            backdrop-filter: blur(3px);
+            background: none; border: 1px solid var(--white-soft); color: white;
+            padding: 16px 55px; font-size: 1.1rem; font-weight: 700; letter-spacing: 5px;
+            text-transform: uppercase; cursor: pointer; transition: 0.4s; backdrop-filter: blur(3px);
         }
-
-        .next-btn:hover {
-            background: var(--white-soft);
-            color: #000;
-            letter-spacing: 8px;
-            transform: translateY(-2px);
-        }
+        .next-btn:hover { background: var(--white-soft); color: #000; letter-spacing: 8px; }
     </style>
 </head>
 <body>
-
-    <div class="background-hero"></div>
-    <div class="overlay"></div>
-
-    <div class="main-container">
-        <h1 class="names">Eva & Samuel</h1>
-        <p class="date-text">12 Mai 2026</p>
-
-        <div class="countdown">
-            <div class="unit"><span id="days">00</span><label>Jours</label></div>
-            <div class="unit"><span id="hours">00</span><label>Heures</label></div>
-            <div class="unit"><span id="mins">00</span><label>Min</label></div>
-            <div class="unit"><span id="secs">00</span><label>Sec</label></div>
-        </div>
-
-        <button class="next-btn" onclick="nextStep()">Entrer</button>
+<div class="background-hero"></div>
+<div class="overlay"></div>
+<div class="main-container">
+    <h1 class="names">Eva & Samuel</h1>
+    <p class="date-text">12 Mai 2026</p>
+    <div class="countdown">
+        <div class="unit"><span id="days">00</span><label>Jours</label></div>
+        <div class="unit"><span id="hours">00</span><label>Heures</label></div>
+        <div class="unit"><span id="mins">00</span><label>Min</label></div>
+        <div class="unit"><span id="secs">00</span><label>Sec</label></div>
     </div>
-
-    <script>
-        // Cible mise à jour : 12 Mai 2026
-        const weddingDate = new Date("May 12, 2026 15:00:00").getTime();
-
-        function update() {
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
-
-            if (diff <= 0) {
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("mins").innerText = "00";
-                document.getElementById("secs").innerText = "00";
-                return;
-            }
-
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = d.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
-            document.getElementById("mins").innerText = m.toString().padStart(2, '0');
-            document.getElementById("secs").innerText = s.toString().padStart(2, '0');
-        }
-
-        setInterval(update, 1000);
-        update();
-
-        function nextStep() {
-            document.querySelector('.main-container').style.opacity = '0';
-            document.querySelector('.main-container').style.transition = '0.8s';
-            setTimeout(() => {
-                alert("Ouverture de l'invitation...");
-            }, 800);
-        }
-    </script>
+    <button class="next-btn" onclick="nextStep()">Entrer</button>
+</div>
+<script>
+    const weddingDate = new Date("May 12, 2026 15:00:00").getTime();
+    function update() {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
+        if (diff <= 0) return;
+        document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+        document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+        document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+        document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+    }
+    setInterval(update, 1000); update();
+    function nextStep() {
+        document.querySelector('.main-container').style.opacity = '0';
+        document.querySelector('.main-container').style.transition = '0.8s';
+        setTimeout(() => {
+            window.location.href = "invitation.html"; // Redirige vers le 2ème fichier
+        }, 800);
+    }
+</script>
 </body>
 </html>
