@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eva & Samuel</title>
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
@@ -31,7 +31,7 @@
             width: 100%;
             height: 100%;
             background: url('bisous.JPG') no-repeat;
-            background-position: center 20%;
+            background-position: center 20%; 
             transform: scale(1.1);
             background-size: cover;
             z-index: 1;
@@ -43,7 +43,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.35); 
             z-index: 2;
         }
 
@@ -74,7 +74,7 @@
             letter-spacing: 6px;
             text-transform: uppercase;
             margin: 10px 0 40px 0;
-            font-weight: 600;
+            font-weight: 700; /* Plus gras pour la visibilité */
             color: #fff;
             text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
         }
@@ -112,8 +112,8 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 6px;
-            font-weight: 400;
-            opacity: 0.9;
+            font-weight: 600; /* Plus gras */
+            opacity: 1; /* Pleine opacité */
         }
 
         .next-btn {
@@ -122,8 +122,8 @@
             color: white;
             padding: 16px 55px;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.1rem; /* Légèrement plus grand */
+            font-weight: 700; /* Plus gras */
             letter-spacing: 5px;
             text-transform: uppercase;
             cursor: pointer;
@@ -142,51 +142,60 @@
 </head>
 <body>
 
-<div class="background-hero"></div>
-<div class="overlay"></div>
+    <div class="background-hero"></div>
+    <div class="overlay"></div>
 
-<div class="main-container">
-    <h1 class="names">Eva & Samuel</h1>
-    <p class="date-text">11 Mai 2026</p>
+    <div class="main-container">
+        <h1 class="names">Eva & Samuel</h1>
+        <p class="date-text">12 Mai 2026</p>
 
-    <div class="countdown">
-        <div class="unit"><span id="days">00</span><label>Jours</label></div>
-        <div class="unit"><span id="hours">00</span><label>Heures</label></div>
-        <div class="unit"><span id="mins">00</span><label>Min</label></div>
-        <div class="unit"><span id="secs">00</span><label>Sec</label></div>
+        <div class="countdown">
+            <div class="unit"><span id="days">00</span><label>Jours</label></div>
+            <div class="unit"><span id="hours">00</span><label>Heures</label></div>
+            <div class="unit"><span id="mins">00</span><label>Min</label></div>
+            <div class="unit"><span id="secs">00</span><label>Sec</label></div>
+        </div>
+
+        <button class="next-btn" onclick="nextStep()">Entrer</button>
     </div>
 
-    <button class="next-btn" onclick="nextStep()">Entrer</button>
-</div>
+    <script>
+        // Cible mise à jour : 12 Mai 2026
+        const weddingDate = new Date("May 12, 2026 15:00:00").getTime();
 
-<script>
-    const weddingDate = new Date("May 11, 2026 15:00:00").getTime();
+        function update() {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
 
-    function update() {
-        const now = new Date().getTime();
-        const diff = weddingDate - now;
+            if (diff <= 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("mins").innerText = "00";
+                document.getElementById("secs").innerText = "00";
+                return;
+            }
 
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById("days").innerText = d.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = h.toString().padStart(2, '0');
-        document.getElementById("mins").innerText = m.toString().padStart(2, '0');
-        document.getElementById("secs").innerText = s.toString().padStart(2, '0');
-    }
+            document.getElementById("days").innerText = d.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+            document.getElementById("mins").innerText = m.toString().padStart(2, '0');
+            document.getElementById("secs").innerText = s.toString().padStart(2, '0');
+        }
 
-    setInterval(update, 1000);
-    update();
+        setInterval(update, 1000);
+        update();
 
-    function nextStep() {
-        document.querySelector('.main-container').style.opacity = '0';
-        document.querySelector('.main-container').style.transition = '0.8s';
-        setTimeout(() => {
-            alert("Ouverture de l'invitation...");
-        }, 800);
-    }
-</script>
+        function nextStep() {
+            document.querySelector('.main-container').style.opacity = '0';
+            document.querySelector('.main-container').style.transition = '0.8s';
+            setTimeout(() => {
+                alert("Ouverture de l'invitation...");
+            }, 800);
+        }
+    </script>
 </body>
 </html>
