@@ -6,40 +6,19 @@
     <title>Eva & Samuel - 12 Mai 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --rose-signature: #e2b4b4;
-            --rose-pale: rgba(226, 180, 180, 0.25);
-            --white-soft: rgba(255, 255, 255, 0.95);
-        }
+        :root { --rose-signature: #e2b4b4; --rose-pale: rgba(226, 180, 180, 0.25); --white-soft: rgba(255, 255, 255, 0.95); }
         body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: 'Cormorant Garamond', serif; background-color: #000; overflow: hidden; }
-        .background-hero {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('bisous.JPG') no-repeat center 20%; background-size: cover;
-            transform: scale(1.1); z-index: 1;
-        }
+        .background-hero { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('bisous.JPG') no-repeat center 20%; background-size: cover; transform: scale(1.1); z-index: 1; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.35); z-index: 2; }
-        .main-container {
-            position: relative; z-index: 10; height: 100vh; display: flex;
-            flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; color: white; padding: 0 20px;
-        }
+        .main-container { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
         .names { font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 14vw, 8rem); color: var(--rose-signature); text-shadow: 2px 2px 15px rgba(0,0,0,0.6); margin: 0; }
         .date-text { font-weight: 700; letter-spacing: 6px; text-transform: uppercase; margin: 10px 0 40px 0; font-size: clamp(1.3rem, 5vw, 1.8rem); text-shadow: 1px 1px 10px rgba(0,0,0,0.5); }
-        .countdown { display: flex; gap: clamp(12px, 4vw, 30px); margin-bottom: 55px; }
-        .unit {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: var(--rose-pale); border: 1px solid rgba(226, 180, 180, 0.5);
-            width: clamp(75px, 20vw, 100px); height: clamp(75px, 20vw, 100px);
-            border-radius: 5px; backdrop-filter: blur(6px);
-        }
-        .unit span { font-size: clamp(1.8rem, 6vw, 2.6rem); font-weight: 700; }
-        .unit label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; font-weight: 600; }
-        .next-btn {
-            background: none; border: 1px solid var(--white-soft); color: white;
-            padding: 16px 55px; font-size: 1.1rem; font-weight: 700; letter-spacing: 5px;
-            text-transform: uppercase; cursor: pointer; transition: 0.4s; backdrop-filter: blur(3px);
-        }
-        .next-btn:hover { background: var(--white-soft); color: #000; letter-spacing: 8px; }
+        .countdown { display: flex; gap: clamp(8px, 2vw, 15px); margin-bottom: 55px; }
+        .unit { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--rose-pale); border: 1px solid rgba(255,255,255,0.2); width: clamp(70px, 18vw, 90px); height: clamp(75px, 20vw, 95px); border-radius: 5px; backdrop-filter: blur(6px); }
+        .unit span { font-size: clamp(1.5rem, 5vw, 2.2rem); font-weight: 700; }
+        .unit label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        .next-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--white-soft); color: white; padding: 16px 50px; font-size: 1rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; cursor: pointer; transition: 0.2s; backdrop-filter: blur(3px); text-decoration: none; }
+        .next-btn:active { transform: scale(0.98); background: var(--white-soft); color: #000; }
     </style>
 </head>
 <body>
@@ -54,7 +33,7 @@
         <div class="unit"><span id="mins">00</span><label>Min</label></div>
         <div class="unit"><span id="secs">00</span><label>Sec</label></div>
     </div>
-    <button class="next-btn" onclick="nextStep()">Entrer</button>
+    <a href="invitation.html" class="next-btn">Entrer</a>
 </div>
 <script>
     const weddingDate = new Date("May 12, 2026 15:00:00").getTime();
@@ -68,13 +47,6 @@
         document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }
     setInterval(update, 1000); update();
-    function nextStep() {
-        document.querySelector('.main-container').style.opacity = '0';
-        document.querySelector('.main-container').style.transition = '0.8s';
-        setTimeout(() => {
-            window.location.href = "invitation.html"; // Redirige vers le 2ème fichier
-        }, 800);
-    }
 </script>
 </body>
 </html>
