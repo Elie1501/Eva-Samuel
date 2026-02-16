@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eva & Samuel</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --rose-signature: #e2b4b4;
-            --rose-pale: rgba(226, 180, 180, 0.2); /* Rose pâle pour les carrés */
-            --white-soft: rgba(255, 255, 255, 0.9);
+            --rose-pale: rgba(226, 180, 180, 0.25);
+            --white-soft: rgba(255, 255, 255, 0.95);
         }
 
         body, html {
@@ -19,7 +19,7 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             background-color: #000;
             overflow: hidden;
         }
@@ -31,7 +31,7 @@
             width: 100%;
             height: 100%;
             background: url('bisous.JPG') no-repeat;
-            background-position: center 20%; 
+            background-position: center 20%;
             transform: scale(1.1);
             background-size: cover;
             z-index: 1;
@@ -43,7 +43,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.35); 
+            background: rgba(0, 0, 0, 0.35);
             z-index: 2;
         }
 
@@ -62,56 +62,57 @@
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(3.5rem, 12vw, 7.5rem);
+            font-size: clamp(4rem, 14vw, 8rem);
             color: var(--rose-signature);
             margin: 0;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
         }
 
         .date-text {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1rem, 4vw, 1.4rem);
-            letter-spacing: clamp(4px, 1.5vw, 8px);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
+            letter-spacing: 6px;
             text-transform: uppercase;
-            margin: 15px 0 35px 0;
-            font-weight: 500;
+            margin: 10px 0 40px 0;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
         }
 
-        /* Conteneur du décompte */
         .countdown {
             display: flex;
-            gap: clamp(10px, 3vw, 25px);
-            margin-bottom: 50px;
+            gap: clamp(12px, 4vw, 30px);
+            margin-bottom: 55px;
             justify-content: center;
         }
 
-        /* Style des petits carrés */
         .unit {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: var(--rose-pale); /* Fond rose pâle */
-            border: 1px solid rgba(226, 180, 180, 0.4); /* Bordure rose discrète */
-            width: clamp(70px, 18vw, 90px);
-            height: clamp(70px, 18vw, 90px);
-            border-radius: 8px; /* Légèrement arrondi pour le style */
-            backdrop-filter: blur(4px); /* Effet de flou derrière le carré */
+            background: var(--rose-pale);
+            border: 1px solid rgba(226, 180, 180, 0.5);
+            width: clamp(75px, 20vw, 100px);
+            height: clamp(75px, 20vw, 100px);
+            border-radius: 5px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
         .unit span {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.4rem, 5vw, 2.2rem);
-            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            font-weight: 700;
             line-height: 1;
         }
 
         .unit label {
-            font-size: clamp(0.45rem, 1.5vw, 0.55rem);
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-            color: white;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            font-weight: 400;
             opacity: 0.9;
         }
 
@@ -119,69 +120,73 @@
             background: none;
             border: 1px solid var(--white-soft);
             color: white;
-            padding: clamp(12px, 3vw, 18px) clamp(30px, 8vw, 60px);
-            font-size: clamp(0.6rem, 2vw, 0.75rem);
-            letter-spacing: 4px;
+            padding: 16px 55px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 5px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s ease;
             border-radius: 2px;
+            backdrop-filter: blur(3px);
         }
 
         .next-btn:hover {
             background: var(--white-soft);
-            color: #333;
-            letter-spacing: 6px;
+            color: #000;
+            letter-spacing: 8px;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
-    <div class="background-hero"></div>
-    <div class="overlay"></div>
+<div class="background-hero"></div>
+<div class="overlay"></div>
 
-    <div class="main-container">
-        <h1 class="names">Eva & Samuel</h1>
-        <p class="date-text">11 Mai 2026</p>
+<div class="main-container">
+    <h1 class="names">Eva & Samuel</h1>
+    <p class="date-text">11 Mai 2026</p>
 
-        <div class="countdown">
-            <div class="unit"><span id="days">00</span><label>Jours</label></div>
-            <div class="unit"><span id="hours">00</span><label>Heures</label></div>
-            <div class="unit"><span id="mins">00</span><label>Min</label></div>
-            <div class="unit"><span id="secs">00</span><label>Sec</label></div>
-        </div>
-
-        <button class="next-btn" onclick="nextStep()">Entrer</button>
+    <div class="countdown">
+        <div class="unit"><span id="days">00</span><label>Jours</label></div>
+        <div class="unit"><span id="hours">00</span><label>Heures</label></div>
+        <div class="unit"><span id="mins">00</span><label>Min</label></div>
+        <div class="unit"><span id="secs">00</span><label>Sec</label></div>
     </div>
 
-    <script>
-        const weddingDate = new Date("May 11, 2026 15:00:00").getTime();
+    <button class="next-btn" onclick="nextStep()">Entrer</button>
+</div>
 
-        function update() {
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
+<script>
+    const weddingDate = new Date("May 11, 2026 15:00:00").getTime();
 
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
+    function update() {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
 
-            document.getElementById("days").innerText = d.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
-            document.getElementById("mins").innerText = m.toString().padStart(2, '0');
-            document.getElementById("secs").innerText = s.toString().padStart(2, '0');
-        }
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        setInterval(update, 1000);
-        update();
+        document.getElementById("days").innerText = d.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+        document.getElementById("mins").innerText = m.toString().padStart(2, '0');
+        document.getElementById("secs").innerText = s.toString().padStart(2, '0');
+    }
 
-        function nextStep() {
-            document.querySelector('.main-container').style.opacity = '0';
-            document.querySelector('.main-container').style.transition = '0.8s';
-            setTimeout(() => {
-                alert("Ouverture de la suite...");
-            }, 800);
-        }
-    </script>
+    setInterval(update, 1000);
+    update();
+
+    function nextStep() {
+        document.querySelector('.main-container').style.opacity = '0';
+        document.querySelector('.main-container').style.transition = '0.8s';
+        setTimeout(() => {
+            alert("Ouverture de l'invitation...");
+        }, 800);
+    }
+</script>
 </body>
 </html>
