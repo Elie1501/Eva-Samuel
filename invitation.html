@@ -13,7 +13,7 @@
             --white-cream: #fffdf9;
             --text-gray: #5a5a5a;
             --text-dark: #333333;
-            --line-color: rgba(212, 165, 165, 0.3);
+            --line-color: rgba(212, 165, 165, 0.25);
         }
 
         body, html {
@@ -26,24 +26,24 @@
             overflow-x: hidden;
         }
 
-        /* --- ÉLÉMENTS FLORAUX EN ARRIÈRE-PLAN --- */
+        /* --- ÉLÉMENTS FLORAUX BIEN VISIBLES --- */
         .bg-flower-left {
             position: fixed;
-            top: -20px;
-            left: -40px;
-            width: clamp(120px, 25vw, 280px); /* Taille adaptative */
-            opacity: 0.4;
-            z-index: -1; /* Derrière le contenu */
+            top: 5%;
+            left: -30px;
+            width: clamp(150px, 25vw, 300px);
+            opacity: 0.8; /* Opacité augmentée pour bien les voir */
+            z-index: 1; /* Devant le fond blanc */
             pointer-events: none;
         }
 
         .bg-flower-right {
             position: fixed;
-            bottom: -20px;
-            right: -40px;
-            width: clamp(140px, 30vw, 320px); /* Taille adaptative */
-            opacity: 0.4;
-            z-index: -1; /* Derrière le contenu */
+            bottom: 5%;
+            right: -30px;
+            width: clamp(180px, 30vw, 350px);
+            opacity: 0.8; /* Opacité augmentée */
+            z-index: 1;
             pointer-events: none;
             transform: rotate(-10deg);
         }
@@ -81,12 +81,12 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover { color: var(--rose-prestige); }
-
-        /* Conteneur de Page */
+        /* Conteneur */
         .page-wrapper {
+            position: relative;
+            z-index: 10; /* Pour passer devant les fleurs si besoin */
             box-sizing: border-box;
-            padding: 100px 20px 60px 20px;
+            padding: 100px 15px 60px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -101,7 +101,7 @@
             text-align: center;
         }
 
-        .wedding-logo { width: clamp(60px, 10vw, 85px); margin-bottom: 15px; }
+        .wedding-logo { width: clamp(60px, 10vw, 80px); margin-bottom: 15px; }
 
         .names {
             font-family: 'Great Vibes', cursive;
@@ -116,26 +116,17 @@
             height: auto;
             margin: 25px 0;
             border: 1px solid var(--line-color);
-            padding: 10px;
+            padding: 8px;
             background: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
         }
 
-        .main-message {
-            max-width: 550px;
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            line-height: 1.6;
-            font-style: italic;
-            margin: 20px 0 45px 0;
-            color: var(--text-dark);
-        }
-
-        /* Cards Mairie & Houppa */
+        /* --- CARDS AVEC BORDURES NETTES SUR MOBILE --- */
         .event-card {
             background: white;
-            border: 1px solid var(--rose-prestige);
-            padding: clamp(25px, 5vw, 40px);
-            margin: 15px 0;
+            border: 2px solid var(--rose-prestige); /* Bordure bien visible */
+            padding: clamp(20px, 5vw, 40px);
+            margin: 20px 0;
             width: 100%;
             max-width: 500px;
             position: relative;
@@ -143,14 +134,15 @@
             background-image: url('droite.JPG');
             background-repeat: no-repeat;
             background-position: bottom right;
-            background-size: clamp(80px, 15vw, 150px);
+            background-size: clamp(80px, 18vw, 140px);
+            box-sizing: border-box;
         }
 
         .event-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255, 253, 249, 0.88);
+            background: rgba(255, 255, 255, 0.85); /* Fond de carte blanc pour lire le texte */
             z-index: 0;
         }
 
@@ -164,17 +156,6 @@
             text-align: left;
         }
 
-        .form-group { margin-bottom: 20px; }
-
-        label {
-            display: block;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            color: var(--text-gray);
-        }
-
         input, select, textarea {
             width: 100%;
             padding: 12px;
@@ -182,7 +163,7 @@
             background: white;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            box-sizing: border-box;
+            margin-bottom: 15px;
             border-radius: 0;
         }
 
@@ -194,25 +175,19 @@
             width: 100%;
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-weight: 600;
             cursor: pointer;
-            transition: 0.4s;
         }
 
-        .btn-rsvp:hover { background: var(--rose-prestige); }
-
-        /* Correction pour les tout petits écrans */
         @media (max-width: 480px) {
-            .page-wrapper { padding-top: 85px; }
-            .nav-links { gap: 8px; }
-            .nav-links a { font-size: 0.6rem; letter-spacing: 1px; }
+            .bg-flower-left, .bg-flower-right { opacity: 0.6; } /* Un peu moins sur petit mobile pour pas gêner */
+            .event-card { width: 100%; margin: 15px 0; }
         }
     </style>
 </head>
 <body>
 
-<img src="doublefleur.JPG" class="bg-flower-left" alt="">
-<img src="fleur.JPG" class="bg-flower-right" alt="">
+<img src="doublefleur.JPG" class="bg-flower-left">
+<img src="fleur.JPG" class="bg-flower-right">
 
 <nav class="navbar">
     <ul class="nav-links">
@@ -225,43 +200,37 @@
 
 <div class="page-wrapper" id="accueil">
     <div class="main-frame">
-        <img src="logo.JPG" alt="Logo ES" class="wedding-logo">
+        <img src="logo.JPG" alt="Logo" class="wedding-logo">
         <h1 class="names">Eva & Samuel</h1>
 
-        <img src="nez.JPG" alt="Eva & Samuel" class="hero-photo">
+        <img src="nez.JPG" alt="Photo" class="hero-photo">
 
-        <div class="main-message">
-            "C’est avec un immense bonheur que nous vous invitons à célébrer notre union. Nous avons hâte de partager ce moment unique avec vous."
+        <div style="max-width: 550px; font-size: 1.3rem; font-style: italic; margin: 20px 0 40px 0;">
+            "C’est avec une joie immense que nous vous invitons à célébrer notre union. Nous avons hâte de partager ce moment unique avec vous."
         </div>
 
         <div class="event-card" id="mairie">
-            <div style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px; color: var(--text-gray);">La Mairie</div>
-            <div style="font-size: 1.4rem; font-style: italic; margin-bottom: 10px;">11 Mai 2026 à 14h30</div>
-            <p style="margin: 0; opacity: 0.9;">Mairie du 16ème, Paris.</p>
+            <div style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 10px; color: var(--text-gray);">La Mairie</div>
+            <div style="font-size: 1.4rem; font-style: italic; margin-bottom: 8px;">11 Mai 2026 à 14h30</div>
+            <p style="margin: 0;">Mairie du 16ème, Paris.</p>
         </div>
 
         <div class="event-card" id="houppa">
-            <div style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px; color: var(--text-gray);">La Houppa</div>
-            <div style="font-size: 1.4rem; font-style: italic; margin-bottom: 10px;">12 Mai 2026 à 17h00</div>
-            <p style="margin: 0; opacity: 0.9;">Célébration de notre union.</p>
+            <div style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 10px; color: var(--text-gray);">La Houppa</div>
+            <div style="font-size: 1.4rem; font-style: italic; margin-bottom: 8px;">12 Mai 2026 à 17h00</div>
+            <p style="margin: 0;">Célébration de notre union.</p>
         </div>
 
-        <img src="verre.JPG" alt="Célébration" class="section-photo">
+        <img src="verre.JPG" alt="Verre" class="section-photo">
 
         <div class="form-container" id="rsvp">
-            <h2 style="text-align: center; letter-spacing: 3px; text-transform: uppercase; font-size: 1.1rem; margin-bottom: 30px;">Confirmer ma présence</h2>
+            <h2 style="text-align: center; letter-spacing: 2px; text-transform: uppercase; font-size: 1rem; margin-bottom: 25px;">Confirmer ma présence</h2>
             <form>
-                <div class="form-group">
-                    <label>Nom & Prénom</label>
-                    <input type="text" placeholder="Votre nom complet" required>
-                </div>
-                <div class="form-group">
-                    <label>Serez-vous présent ?</label>
-                    <select required>
-                        <option value="oui">Oui, avec plaisir</option>
-                        <option value="non">Non, avec regret</option>
-                    </select>
-                </div>
+                <input type="text" placeholder="Nom & Prénom" required>
+                <select required>
+                    <option value="oui">Oui, avec plaisir</option>
+                    <option value="non">Non, avec regret</option>
+                </select>
                 <button type="submit" class="btn-rsvp">Envoyer ma réponse</button>
             </form>
         </div>
