@@ -16,29 +16,32 @@
             --line-color: rgba(212, 165, 165, 0.25);
         }
 
-        body, html {
+        /* Correction pour l'affichage du fond sur Mobile */
+        html, body {
             margin: 0;
             padding: 0;
-            background-color: var(--white-cream);
+            width: 100%;
+            min-height: 100%;
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-dark);
-            scroll-behavior: smooth;
+            background-color: var(--white-cream);
         }
 
-        /* --- FOND EN CONTINU --- */
-        .background-pattern {
+        /* --- FOND CONTINU (FIXÉ ET RÉPÉTÉ) --- */
+        body::before {
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* L'image se répète sur toute la page */
             background-image: url('continue.JPG');
-            background-repeat: repeat;
-            background-size: 250px; /* Taille du motif, ajustable */
-            opacity: 0.12; /* Très léger pour le luxe et la lisibilité */
+            background-repeat: repeat; /* Répétition infinie */
+            background-size: 200px; /* Taille du motif réduite pour mobile */
+            opacity: 0.15; /* Opacité ajustée pour être visible mais discrète */
             z-index: -1;
             pointer-events: none;
+            display: block !important; /* Force l'affichage */
         }
 
         /* Barre de Navigation */
@@ -47,19 +50,20 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 65px;
-            background-color: rgba(255, 253, 249, 0.95);
+            height: 60px;
+            background-color: rgba(255, 253, 249, 0.96);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             border-bottom: 1px solid var(--line-color);
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
         .nav-links {
             display: flex;
-            gap: clamp(10px, 4vw, 30px);
+            gap: 15px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -69,30 +73,25 @@
             text-decoration: none;
             color: var(--text-gray);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.7rem;
-            transition: 0.3s;
+            letter-spacing: 1px;
+            font-size: 0.65rem;
         }
 
-        /* Conteneur */
         .page-wrapper {
             box-sizing: border-box;
-            padding: 100px 15px 60px 15px;
+            padding: 90px 15px 40px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .main-frame {
             width: 100%;
             max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
         }
-
-        .wedding-logo { width: clamp(60px, 10vw, 80px); margin-bottom: 15px; }
 
         .names {
             font-family: 'Great Vibes', cursive;
@@ -105,33 +104,32 @@
             width: 100%;
             max-width: 550px;
             height: auto;
-            margin: 25px 0;
             border: 1px solid var(--line-color);
             padding: 8px;
             background: white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            margin: 20px 0;
             box-sizing: border-box;
         }
 
-        /* Cards avec Bordures Bien Visibles */
+        /* --- CARDS AVEC BORDURES ET FOND BLANC --- */
         .event-card {
             background: white;
-            border: 2px solid var(--rose-prestige);
-            padding: clamp(25px, 5vw, 45px);
+            border: 2px solid var(--rose-prestige); /* Bordure rose bien visible */
+            padding: 30px 20px;
             margin: 20px 0;
             width: 100%;
-            max-width: 520px;
+            max-width: 500px;
             position: relative;
             overflow: hidden;
             box-sizing: border-box;
-            /* Image droite.JPG toujours en bas à droite de la card */
             background-image: url('droite.JPG');
             background-repeat: no-repeat;
             background-position: bottom right;
-            background-size: clamp(90px, 18vw, 150px);
+            background-size: 120px;
         }
 
-        .event-card::before {
+        /* Voile blanc interne pour la lisibilité */
+        .event-card::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -141,13 +139,7 @@
 
         .event-card > * { position: relative; z-index: 1; }
 
-        /* Formulaire */
-        .form-container {
-            width: 100%;
-            max-width: 500px;
-            margin-top: 30px;
-            text-align: left;
-        }
+        .form-container { width: 100%; max-width: 500px; margin-top: 30px; text-align: left; }
 
         input, select, textarea {
             width: 100%;
@@ -155,9 +147,9 @@
             border: 1px solid var(--line-color);
             background: white;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
             margin-bottom: 15px;
             border-radius: 0;
+            -webkit-appearance: none; /* Correction bug affichage select sur iPhone */
         }
 
         .btn-rsvp {
@@ -167,21 +159,25 @@
             padding: 16px;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             cursor: pointer;
             font-weight: 600;
         }
 
-        @media (max-width: 480px) {
-            .background-pattern { background-size: 180px; } /* Motif plus petit sur mobile */
-            .navbar { height: 60px; }
-            .event-card { width: 100%; }
+        /* Media Query pour forcer le fond sur tous les mobiles */
+        @media (max-width: 768px) {
+            body::before {
+                background-size: 150px; /* Plus petit pour mobile */
+                opacity: 0.2; /* Un peu plus fort sur mobile pour être sûr de le voir */
+            }
+            .event-card {
+                padding: 25px 15px;
+                border: 1.5px solid var(--rose-prestige);
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="background-pattern"></div>
 
 <nav class="navbar">
     <ul class="nav-links">
@@ -194,43 +190,37 @@
 
 <div class="page-wrapper" id="accueil">
     <div class="main-frame">
-        <img src="logo.JPG" alt="Logo" class="wedding-logo">
+        <img src="logo.JPG" alt="Logo" style="width: 70px;">
         <h1 class="names">Eva & Samuel</h1>
 
-        <img src="nez.JPG" alt="Photo Principale" class="hero-photo">
+        <img src="nez.JPG" alt="Photo" class="hero-photo">
 
-        <div style="max-width: 550px; font-size: 1.35rem; font-style: italic; margin: 20px 0 45px 0; line-height: 1.6;">
-            "C’est avec un bonheur immense que nous vous convions à célébrer notre union. Nous avons hâte de vivre ce moment inoubliable entourés de ceux que nous aimons."
+        <div style="font-size: 1.3rem; font-style: italic; margin: 20px 0 40px 0; line-height: 1.5;">
+            "C’est avec un bonheur immense que nous vous convions à célébrer notre union."
         </div>
 
         <div class="event-card" id="mairie">
-            <div style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 10px; color: var(--text-gray);">La Mairie</div>
-            <div style="font-size: 1.5rem; font-style: italic; margin-bottom: 10px;">11 Mai 2026 à 14h30</div>
-            <p style="margin: 0; font-size: 1.1rem;">Mairie du 16ème arrondissement, Paris.</p>
+            <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">La Mairie</div>
+            <div style="font-size: 1.4rem; font-style: italic; margin: 10px 0;">11 Mai 2026 à 14h30</div>
+            <p style="margin: 0;">Mairie du 16ème, Paris.</p>
         </div>
 
         <div class="event-card" id="houppa">
-            <div style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 10px; color: var(--text-gray);">La Houppa</div>
-            <div style="font-size: 1.5rem; font-style: italic; margin-bottom: 10px;">12 Mai 2026 à 17h00</div>
-            <p style="margin: 0; font-size: 1.1rem;">Nous serions honorés de célébrer notre union religieuse avec vous.</p>
+            <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">La Houppa</div>
+            <div style="font-size: 1.4rem; font-style: italic; margin: 10px 0;">12 Mai 2026 à 17h00</div>
+            <p style="margin: 0;">Célébration de notre union religieuse.</p>
         </div>
 
-        <img src="verre.JPG" alt="Célébration" class="section-photo">
+        <img src="verre.JPG" alt="Verre" class="section-photo">
 
         <div class="form-container" id="rsvp">
-            <h2 style="text-align: center; letter-spacing: 3px; text-transform: uppercase; font-size: 1.1rem; margin-bottom: 30px;">Confirmer ma présence</h2>
+            <h2 style="text-align: center; text-transform: uppercase; font-size: 1rem; margin-bottom: 25px;">Confirmer ma présence</h2>
             <form>
-                <div style="margin-bottom: 15px;">
-                    <label style="display:block; font-size:0.75rem; letter-spacing:2px; margin-bottom:5px;">NOM & PRÉNOM</label>
-                    <input type="text" placeholder="Votre nom complet" required>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label style="display:block; font-size:0.75rem; letter-spacing:2px; margin-bottom:5px;">SEREZ-VOUS PRÉSENT ?</label>
-                    <select required>
-                        <option value="oui">Oui, avec plaisir</option>
-                        <option value="non">Non, avec regret</option>
-                    </select>
-                </div>
+                <input type="text" placeholder="Nom & Prénom" required>
+                <select required>
+                    <option value="oui">Oui, avec plaisir</option>
+                    <option value="non">Non, avec regret</option>
+                </select>
                 <button type="submit" class="btn-rsvp">Envoyer ma réponse</button>
             </form>
         </div>
