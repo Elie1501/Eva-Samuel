@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eva & Samuel</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --rose-signature: #e2b4b4;
+            --white-soft: rgba(255, 255, 255, 0.9);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .background-hero {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('bisous.JPG') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(4rem, 15vw, 8rem);
+            color: var(--rose-signature);
+            margin: 0;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
+        }
+
+        /* Nouvelle police pour la date */
+        .date-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin: 20px 0 40px 0;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .countdown {
+            display: flex;
+            gap: clamp(15px, 5vw, 40px);
+            margin-bottom: 60px;
+        }
+
+        .unit {
+            display: flex;
+            flex-direction: column;
+            min-width: 60px;
+        }
+
+        .unit span {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 400;
+        }
+
+        .unit label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 8px;
+            color: var(--rose-signature);
+        }
+
+        .next-btn {
+            background: none;
+            border: 1px solid var(--white-soft);
+            color: white;
+            padding: 18px 60px;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border-radius: 2px;
+            backdrop-filter: blur(2px);
+        }
+
+        .next-btn:hover {
+            background: var(--white-soft);
+            color: #333;
+            letter-spacing: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="background-hero"></div>
+<div class="overlay"></div>
+
+<div class="main-container">
+    <h1 class="names">Eva & Samuel</h1>
+    <p class="date-text">11 Mai 2026</p>
+
+    <div class="countdown">
+        <div class="unit"><span id="days">00</span><label>Jours</label></div>
+        <div class="unit"><span id="hours">00</span><label>Heures</label></div>
+        <div class="unit"><span id="mins">00</span><label>Min</label></div>
+        <div class="unit"><span id="secs">00</span><label>Sec</label></div>
+    </div>
+
+    <button class="next-btn" onclick="nextStep()">Entrer</button>
+</div>
+
+<script>
+    const weddingDate = new Date("May 11, 2026 15:00:00").getTime();
+
+    function update() {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = d.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+        document.getElementById("mins").innerText = m.toString().padStart(2, '0');
+        document.getElementById("secs").innerText = s.toString().padStart(2, '0');
+    }
+
+    setInterval(update, 1000);
+    update();
+
+    function nextStep() {
+        document.querySelector('.main-container').style.opacity = '0';
+        document.querySelector('.main-container').style.transition = '1s';
+        setTimeout(() => {
+            alert("Ouverture de l'invitation...");
+        }, 1000);
+    }
+</script>
+</body>
+</html>
