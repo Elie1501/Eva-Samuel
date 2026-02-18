@@ -38,7 +38,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            margin: 10px 0;
+            margin: 5px 0 -15px; /* Margin négatif pour remonter l'image */
         }
         .name-block {
             display: flex;
@@ -74,7 +74,8 @@
         .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dark); margin-bottom: 5px; }
         .hero-photo, .section-photo { width: 100%; max-width: 500px; border: 2px solid white; padding: 5px; background: white; margin: 10px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
-        .sub-text { font-size: 1.2rem; font-style: italic; color: var(--text-gray); display: block; margin-bottom: 5px; }
+        .sub-text { font-size: 1.2rem; font-style: italic; color: var(--text-gray); display: block; margin-bottom: 2px; }
+        
         .date-block { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.3; margin-bottom: 10px; }
         .date-line { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); }
         .venue-name { font-size: 1.4rem; font-weight: 700; color: var(--rose-prestige); margin-top: 2px; display: block; }
@@ -99,8 +100,20 @@
         }
         .btn-mini:hover { background: var(--rose-prestige); color: white; }
 
-        .illust-voiture { width: 120px; height: auto; margin: 5px auto; display: block; }
-        .illust-bagues { width: 90px; height: auto; margin: 5px auto; display: block; }
+        /* ESPACES RÉDUITS AU MAXIMUM */
+        .illust-voiture { 
+            width: 110px; 
+            height: auto; 
+            margin: -25px auto 2px; /* Remonte encore plus vers les noms */
+            display: block; 
+        }
+        .illust-bagues { 
+            width: 85px; 
+            height: auto; 
+            margin: -15px auto 2px; 
+            display: block; 
+        }
+
         .hebreu-img { width: 100%; max-width: 380px; margin: 0 auto 10px; display: block; filter: sepia(0.2); }
 
         .family-grid {
@@ -124,7 +137,6 @@
         }
         .memorial-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.5; color: var(--text-dark); font-style: italic; margin: 0; }
 
-        /* FORMULAIRE STYLISÉ */
         .wedding-card { background: white; padding: 25px 20px; margin-top: 20px; border: 1px solid var(--line-color); text-align: left; }
         .btn-action { background: var(--text-dark); color: white; border: none; padding: 16px; width: 100%; text-transform: uppercase; font-weight: 700; cursor: pointer; letter-spacing: 2px; font-family: 'Montserrat', sans-serif; transition: 0.3s; }
 
@@ -216,134 +228,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="event-card" id="houppa">
-            <img src="hebreu.png" alt="Bénédiction" class="hebreu-img">
-            <h2 class="section-title">Houppa</h2>
-
-            <div class="family-grid">
-                <div class="family-col">
-                    <h3>Famille de la Kala</h3>
-                    <p>Jacqueline Levy</p>
-                    <p>Huguette Soulat</p>
-                    <div class="parent-line">
-                        <p>Cecilia & Stéphane Levy</p>
-                    </div>
-                </div>
-                <div class="family-col">
-                    <h3>Famille du Hatan</h3>
-                    <p>Simone Msika</p>
-                    <p style="visibility: hidden;">Compensateur</p>
-                    <div class="parent-line">
-                        <p>Corinne & Georges Uzan</p>
-                    </div>
-                </div>
-            </div>
-
-            <p style="margin-bottom: 25px; font-style: italic; font-size: 0.95rem;">
-                Ont l’immense joie de vous faire part de la Houppa de leurs enfants et petits-enfants
-            </p>
-
-            <div class="names-couple-container">
-                <div class="name-block">
-                    <p class="name-french">Eva</p>
-                    <span class="name-hebrew-sub">חוה</span>
-                </div>
-                <span class="ampersand">&</span>
-                <div class="name-block">
-                    <p class="name-french">Samuel</p>
-                    <span class="name-hebrew-sub">שמואל</span>
-                </div>
-            </div>
-
-            <img src="baguess.png" alt="Alliances" class="illust-bagues">
-
-            <div class="date-block">
-                <span class="date-line">Mardi 12 Mai 2026</span><br>
-                <span>à 17h30</span>
-            </div>
-
-            <div class="info-block">
-                <span class="venue-name">Le White</span>
-                <span class="address-text">68 rue Louis Ampère, 93330 Neuilly sur Marne</span>
-                <span class="highlight-text" style="font-size: 1.1rem; margin-top: 15px; border-top: 1px solid var(--line-color); padding-top: 10px;">
-                    La cérémonie sera suivie de la réception
-                </span>
-                <div class="action-btns">
-                    <a href="https://waze.com/ul?q=Le+White+68+rue+Louis+Ampere+93330+Neuilly+sur+Marne" target="_blank" class="btn-mini">Waze</a>
-                    <button onclick="handleCalendar('Houppa', '20260512T173000', '20260513T040000', 'Le White, Neuilly sur Marne')" class="btn-mini">Calendrier</button>
-                </div>
-            </div>
-
-            <div class="memorial-card">
-                <p>Une pensée très émue pour nos grands-parents<br>
-                    <strong>Roger Benoun Levy, Michel Soulat</strong>,<br>
-                    <strong>Claude Nessim Msika</strong>,<br>
-                    <strong>Thérèse Esther & Jacques Isaac Uzan</strong><br>
-                    qui nous manqueront tant en ce jour unique.<br><br>
-                    Que leurs bénédictions illuminent notre vie.
-                </p>
-            </div>
         </div>
-
-        <img src="verre.JPG" alt="Célébration" class="section-photo">
-
-        <div class="wedding-card" id="rsvp">
-            <h2 class="section-title" style="text-align: center; font-size: 1.6rem;">Confirmation</h2>
-            <span class="rsvp-deadline">Réponse souhaitée avant le 1er Avril 2026</span>
-
-            <form id="rsvpForm">
-                <input type="text" name="nom" required placeholder="Nom & Prénom" class="form-input">
-
-                <select name="pres_m" id="pres_m" onchange="toggleM()" required class="form-input">
-                    <option value="" disabled selected>Présence Mairie & Vin d'honneur ?</option>
-                    <option value="oui">OUI</option>
-                    <option value="non">NON</option>
-                </select>
-                <div id="sec_m" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 10px; border-left: 2px solid var(--rose-prestige);">
-                    <input type="number" name="nb_m" min="1" placeholder="Nombre de personnes" class="form-input" style="margin-bottom:0;">
-                </div>
-
-                <select name="pres_h" id="pres_h" onchange="toggleH()" required class="form-input">
-                    <option value="" disabled selected>Présence Houppa & Soirée ?</option>
-                    <option value="oui">OUI</option>
-                    <option value="non">NON</option>
-                </select>
-                <div id="sec_h" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 10px; border-left: 2px solid var(--rose-prestige);">
-                    <input type="number" name="nb_h" min="1" placeholder="Nombre de personnes" class="form-input" style="margin-bottom:0;">
-                </div>
-
-                <div class="message-box">
-                    <label>Un petit mot pour nous...</label>
-                    <textarea name="message" placeholder="Votre message ici..."></textarea>
-                </div>
-
-                <button type="submit" id="subBtn" class="btn-action">Envoyer ma réponse</button>
-            </form>
-        </div>
-    </div>
 </div>
-
-<script>
-    function toggleM() { document.getElementById('sec_m').style.display = (document.getElementById('pres_m').value === 'oui') ? 'block' : 'none'; }
-    function toggleH() { document.getElementById('sec_h').style.display = (document.getElementById('pres_h').value === 'oui') ? 'block' : 'none'; }
-
-    function handleCalendar(type, start, end, loc) {
-        const title = "Mariage Eva & Samuel - " + type;
-        const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
-        if (isIOS) {
-            const icsData = ["BEGIN:VCALENDAR","VERSION:2.0","BEGIN:VEVENT","DTSTART:"+start,"DTEND:"+end,"SUMMARY:"+title,"LOCATION:"+loc,"END:VEVENT","END:VCALENDAR"].join("\r\n");
-            const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
-            const link = document.createElement("a");
-            link.href = window.URL.createObjectURL(blob); link.setAttribute("download", title + ".ics");
-            document.body.appendChild(link); link.click(); document.body.removeChild(link);
-        } else {
-            const gStart = start + "Z"; const gEnd = end + "Z";
-            const gUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${gStart}/${gEnd}&location=${encodeURIComponent(loc)}`;
-            window.open(gUrl, '_blank');
-        }
-    }
-</script>
-
 </body>
 </html>
