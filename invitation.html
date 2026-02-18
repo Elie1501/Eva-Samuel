@@ -47,6 +47,24 @@
         .family-col p { font-size: 0.8rem; margin: 2px 0; color: var(--text-dark); line-height: 1.2; word-wrap: break-word; }
         .family-label { font-weight: 700; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px; color: var(--text-gray); display: block; margin-top: 8px; }
 
+        /* Nouvelle Carte Souvenir Transparente */
+        .memorial-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            padding: 40px 25px;
+            margin: 30px auto 10px;
+            max-width: 90%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .memorial-card p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+            font-style: italic;
+            margin: 0;
+        }
+
         .wedding-card { background: white; padding: 25px 20px; margin-top: 30px; border: 1px solid var(--line-color); text-align: left; }
         .btn-action { background: var(--text-dark); color: white; border: none; padding: 16px; width: 100%; text-transform: uppercase; font-weight: 700; cursor: pointer; letter-spacing: 2px; font-family: 'Montserrat', sans-serif; }
     </style>
@@ -100,8 +118,6 @@
                     <p>Cecilia et Stephane Levy</p>
                     <span class="family-label">Grands-parents</span>
                     <p>Jacqueline Levy et Huguette Soulat</p>
-                    <span class="family-label" style="opacity: 0.7;">En mémoire de</span>
-                    <p style="font-style: italic;">Roger Benoun Levy et Michel Soulat</p>
                 </div>
 
                 <div class="family-col">
@@ -110,9 +126,6 @@
                     <p>Corinne et Georges Uzan</p>
                     <span class="family-label">Grand-mère</span>
                     <p>Simone Msika</p>
-                    <span class="family-label" style="opacity: 0.7;">En mémoire de</span>
-                    <p style="font-style: italic;">Claude Nessim Msika</p>
-                    <p style="font-style: italic;">Thérèse Esther et Jacques Isaac Uzan</p>
                 </div>
             </div>
 
@@ -130,6 +143,17 @@
             <div class="info-block">
                 <span class="venue-name">Le White</span>
                 <span class="address-text">68 rue Louis Ampère, 93330 Neuilly sur Marne</span>
+            </div>
+
+            <div class="memorial-card">
+                <p>
+                    Une pensée très émue pour nos grands-parents<br>
+                    <strong>Roger Benoun Levy & Michel Soulat</strong>,<br>
+                    <strong>Claude Nessim Msika</strong>,<br>
+                    <strong>Thérèse Esther & Jacques Isaac Uzan</strong><br>
+                    qui nous manqueront tant en ce jour unique.<br><br>
+                    Que leurs bénédictions illuminent notre vie.
+                </p>
             </div>
         </div>
 
