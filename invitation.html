@@ -27,7 +27,7 @@
 
         .names-inline { font-family: 'Great Vibes', cursive; color: var(--rose-prestige); font-size: clamp(2.5rem, 8vw, 3.5rem); margin: 5px 0 0 0; }
         .names-hebrew { font-family: 'Cormorant Garamond', serif; color: var(--rose-prestige); font-size: 1.8rem; font-weight: 700; margin-bottom: 10px; direction: rtl; }
-
+        
         .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dark); margin-bottom: 5px; }
 
         .hero-photo, .section-photo { width: 100%; max-width: 500px; border: 2px solid white; padding: 5px; background: white; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -41,17 +41,19 @@
 
         .event-card { background-color: rgba(255, 255, 255, 0.95); border: 1px solid var(--line-color); padding: 30px 15px; margin: 20px 0; width: 100%; position: relative; }
 
-        .action-btns { display: flex; justify: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-        .btn-mini {
-            text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.65rem;
-            text-transform: uppercase; letter-spacing: 1px; color: var(--rose-prestige);
+        .action-btns { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .btn-mini { 
+            text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; 
+            text-transform: uppercase; letter-spacing: 1px; color: var(--rose-prestige); 
             border: 1px solid var(--rose-prestige); padding: 8px 12px; border-radius: 4px; transition: 0.3s;
             cursor: pointer; background: transparent;
         }
         .btn-mini:hover { background: var(--rose-prestige); color: white; }
 
-        /* Style pour les icônes/illustrations */
-        .illust-img { width: 60px; height: auto; margin: 0 auto 10px; display: block; }
+        /* --- IMAGES AGRANDIES --- */
+        .illust-voiture { width: 120px; height: auto; margin: 0 auto 15px; display: block; } /* +50% de 80px */
+        .illust-bagues { width: 100px; height: auto; margin: 0 auto 20px; display: block; } /* +50% de 65px */
+        
         .hebreu-img { width: 100%; max-width: 400px; margin: 0 auto 20px; display: block; filter: sepia(0.2); }
 
         .family-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 25px; text-align: center; border-bottom: 1px solid var(--line-color); padding-bottom: 20px; }
@@ -95,7 +97,7 @@
         <img src="nez.JPG" alt="Eva & Samuel" class="hero-photo">
 
         <div class="event-card" id="mairie">
-            <img src="voiture.png" alt="Voiture" class="illust-img">
+            <img src="voiture.png" alt="Voiture" class="illust-voiture">
 
             <h2 class="section-title">Cérémonie Civile</h2>
             <div class="names-inline">Eva & Samuel</div>
@@ -126,7 +128,7 @@
         </div>
 
         <div class="event-card" id="houppa">
-            <img src="baguess.png" alt="Alliances" class="illust-img" style="width: 50px; margin-bottom: 20px;">
+            <img src="baguess.png" alt="Alliances" class="illust-bagues">
 
             <img src="hebreu.png" alt="Bénédiction" class="hebreu-img">
 
