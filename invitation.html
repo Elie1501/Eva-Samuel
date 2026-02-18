@@ -27,7 +27,7 @@
 
         .names-inline { font-family: 'Great Vibes', cursive; color: var(--rose-prestige); font-size: clamp(2.5rem, 8vw, 3.5rem); margin: 5px 0 0 0; }
         .names-hebrew { font-family: 'Cormorant Garamond', serif; color: var(--rose-prestige); font-size: 1.8rem; font-weight: 700; margin-bottom: 10px; direction: rtl; }
-        
+
         .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dark); margin-bottom: 5px; }
 
         .hero-photo, .section-photo { width: 100%; max-width: 500px; border: 2px solid white; padding: 5px; background: white; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -41,14 +41,17 @@
 
         .event-card { background-color: rgba(255, 255, 255, 0.95); border: 1px solid var(--line-color); padding: 30px 15px; margin: 20px 0; width: 100%; position: relative; }
 
-        .action-btns { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-        .btn-mini { 
-            text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; 
-            text-transform: uppercase; letter-spacing: 1px; color: var(--rose-prestige); 
+        .action-btns { display: flex; justify: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .btn-mini {
+            text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.65rem;
+            text-transform: uppercase; letter-spacing: 1px; color: var(--rose-prestige);
             border: 1px solid var(--rose-prestige); padding: 8px 12px; border-radius: 4px; transition: 0.3s;
+            cursor: pointer; background: transparent;
         }
         .btn-mini:hover { background: var(--rose-prestige); color: white; }
 
+        /* Style pour les icônes/illustrations */
+        .illust-img { width: 60px; height: auto; margin: 0 auto 10px; display: block; }
         .hebreu-img { width: 100%; max-width: 400px; margin: 0 auto 20px; display: block; filter: sepia(0.2); }
 
         .family-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 25px; text-align: center; border-bottom: 1px solid var(--line-color); padding-bottom: 20px; }
@@ -92,6 +95,8 @@
         <img src="nez.JPG" alt="Eva & Samuel" class="hero-photo">
 
         <div class="event-card" id="mairie">
+            <img src="voiture.png" alt="Voiture" class="illust-img">
+
             <h2 class="section-title">Cérémonie Civile</h2>
             <div class="names-inline">Eva & Samuel</div>
             <span class="sub-text">Se diront « oui »</span>
@@ -104,16 +109,16 @@
             <div class="info-block">
                 <span class="venue-name">Mairie de Sarcelles</span>
                 <span class="address-text">3 rue de la Résistance, 95200 Sarcelles</span>
-                
+
                 <div class="action-btns">
                     <a href="https://waze.com/ul?q=Mairie+de+Sarcelles+3+rue+de+la+resistance+95200+Sarcelles" target="_blank" class="btn-mini">Itinéraire Waze</a>
-                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Mariage+Eva+%26+Samuel+-+Mairie&dates=20260506T123000Z/20260506T140000Z&details=Cérémonie+civile+suivie+d'un+vin+d'honneur.&location=3+rue+de+la+Résistance,+95200+Sarcelles" target="_blank" class="btn-mini">Ajouter à l'agenda</a>
+                    <button onclick="downloadICS('Mariage Eva & Samuel - Mairie', 'Cérémonie civile suivie d\'un vin d\'honneur.', '3 rue de la Résistance, 95200 Sarcelles', '20260506T143000', '20260506T160000')" class="btn-mini">Ajouter au calendrier</button>
                 </div>
 
                 <span class="highlight-text">Un vin d'honneur suivra la cérémonie au :</span>
                 <span class="venue-name" style="font-size: 1.2rem;">Centre Bérechit</span>
                 <span class="address-text">74 Avenue Paul Valéry, 95200 Sarcelles</span>
-                
+
                 <div class="action-btns">
                     <a href="https://waze.com/ul?q=Centre+Berechit+74+Avenue+Paul+Valery+95200+Sarcelles" target="_blank" class="btn-mini">Itinéraire Waze</a>
                 </div>
@@ -121,6 +126,8 @@
         </div>
 
         <div class="event-card" id="houppa">
+            <img src="baguess.png" alt="Alliances" class="illust-img" style="width: 50px; margin-bottom: 20px;">
+
             <img src="hebreu.png" alt="Bénédiction" class="hebreu-img">
 
             <div class="family-grid">
@@ -155,10 +162,10 @@
             <div class="info-block">
                 <span class="venue-name">Le White</span>
                 <span class="address-text">68 rue Louis Ampère, 93330 Neuilly sur Marne</span>
-                
+
                 <div class="action-btns">
                     <a href="https://waze.com/ul?q=Le+White+68+rue+Louis+Ampere+93330+Neuilly+sur+Marne" target="_blank" class="btn-mini">Itinéraire Waze</a>
-                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Mariage+Eva+%26+Samuel+-+Houppa&dates=20260512T153000Z/20260513T020000Z&details=Célébration+de+la+Houppa+suivie+de+la+soirée.&location=68+rue+Louis+Ampère,+93330+Neuilly+sur+Marne" target="_blank" class="btn-mini">Ajouter à l'agenda</a>
+                    <button onclick="downloadICS('Mariage Eva & Samuel - Houppa', 'Célébration de la Houppa suivie de la soirée.', '68 rue Louis Ampère, 93330 Neuilly sur Marne', '20260512T173000', '20260513T040000')" class="btn-mini">Ajouter au calendrier</button>
                 </div>
             </div>
 
@@ -208,6 +215,30 @@
 <script>
     function toggleM() { document.getElementById('sec_m').style.display = (document.getElementById('pres_m').value === 'oui') ? 'block' : 'none'; }
     function toggleH() { document.getElementById('sec_h').style.display = (document.getElementById('pres_h').value === 'oui') ? 'block' : 'none'; }
+
+    function downloadICS(title, description, location, startTime, endTime) {
+        const icsData = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PROID:-//EvaSamuel//WeddingInvitation//FR",
+            "BEGIN:VEVENT",
+            "DTSTART:" + startTime,
+            "DTEND:" + endTime,
+            "SUMMARY:" + title,
+            "DESCRIPTION:" + description,
+            "LOCATION:" + location,
+            "END:VEVENT",
+            "END:VCALENDAR"
+        ].join("\r\n");
+
+        const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.setAttribute("download", title + ".ics");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 </script>
 
 </body>
