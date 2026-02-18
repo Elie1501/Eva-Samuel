@@ -50,9 +50,9 @@
         }
         .btn-mini:hover { background: var(--rose-prestige); color: white; }
 
-        /* --- IMAGES AGRANDIES --- */
-        .illust-voiture { width: 180px; height: auto; margin: 0 auto 15px; display: block; } 
-        .illust-bagues { width: 150px; height: auto; margin: 0 auto 20px; display: block; } 
+        /* --- IMAGES DÉCORATIVES --- */
+        .illust-voiture { width: 180px; height: auto; margin: 15px auto; display: block; } 
+        .illust-bagues { width: 150px; height: auto; margin: 15px auto; display: block; } 
 
         .hebreu-img { width: 100%; max-width: 400px; margin: 0 auto 20px; display: block; filter: sepia(0.2); }
 
@@ -97,10 +97,11 @@
         <img src="nez.JPG" alt="Eva & Samuel" class="hero-photo">
 
         <div class="event-card" id="mairie">
-            <img src="voiture.png" alt="Voiture" class="illust-voiture">
-
             <h2 class="section-title">Cérémonie Civile</h2>
             <div class="names-inline">Eva & Samuel</div>
+            
+            <img src="voiture.png" alt="Voiture" class="illust-voiture">
+
             <span class="sub-text">Se diront « oui »</span>
 
             <div class="date-block">
@@ -128,9 +129,9 @@
         </div>
 
         <div class="event-card" id="houppa">
-            <img src="baguess.png" alt="Alliances" class="illust-bagues">
-
             <img src="hebreu.png" alt="Bénédiction" class="hebreu-img">
+
+            <img src="baguess.png" alt="Alliances" class="illust-bagues">
 
             <div class="family-grid">
                 <div class="family-col">
@@ -223,7 +224,6 @@
         const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
 
         if (isIOS) {
-            // Téléchargement ICS pour iPhone
             const icsData = [
                 "BEGIN:VCALENDAR",
                 "VERSION:2.0",
@@ -244,8 +244,6 @@
             link.click();
             document.body.removeChild(link);
         } else {
-            // Lien Google Calendar pour les autres (Android/PC)
-            // Note: Google utilise UTC, on ajuste grossièrement pour l'exemple (Z)
             const gStart = start + "Z"; 
             const gEnd = end + "Z";
             const gUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${gStart}/${gEnd}&location=${encodeURIComponent(loc)}`;
