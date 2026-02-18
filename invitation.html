@@ -19,43 +19,41 @@
         #fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('fond.JPG') repeat; background-size: 250px; opacity: 0.25; z-index: 0; pointer-events: none; }
 
         .navbar { position: fixed; top: 0; width: 100%; height: 60px; background-color: rgba(255, 253, 249, 0.98); display: flex; justify-content: center; align-items: center; z-index: 1000; border-bottom: 1px solid var(--line-color); backdrop-filter: blur(5px); }
-        .nav-links { display: flex; gap: 10px; list-style: none; padding: 0; margin: 0; }
-        .nav-links a { text-decoration: none; color: var(--text-gray); text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 1px; font-weight: 700; }
+        .nav-links { display: flex; gap: 15px; list-style: none; padding: 0; margin: 0; }
+        .nav-links a { text-decoration: none; color: var(--text-gray); text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 1px; font-weight: 700; }
 
         .page-wrapper { position: relative; z-index: 10; padding: 80px 10px 40px 10px; display: flex; flex-direction: column; align-items: center; }
         .main-frame { width: 100%; max-width: 600px; text-align: center; }
 
-        .names-inline { font-family: 'Great Vibes', cursive; color: var(--rose-prestige); font-size: clamp(2.5rem, 8vw, 3.5rem); margin: 5px 0; }
-        .names-hebrew { font-family: 'Cormorant Garamond', serif; color: var(--rose-prestige); font-size: 1.8rem; font-weight: 700; margin-bottom: 10px; direction: rtl; }
+        .names-inline { font-family: 'Great Vibes', cursive; color: var(--rose-prestige); font-size: clamp(2.8rem, 10vw, 4rem); margin: 5px 0; }
+        .names-hebrew { font-family: 'Cormorant Garamond', serif; color: var(--rose-prestige); font-size: 2rem; font-weight: 700; margin-bottom: 10px; direction: rtl; }
         
         .section-title { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dark); margin-bottom: 5px; }
-
         .hero-photo, .section-photo { width: 100%; max-width: 500px; border: 2px solid white; padding: 5px; background: white; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
         .sub-text { font-size: 1.2rem; font-style: italic; color: var(--text-gray); display: block; margin-bottom: 10px; }
-        .date-block { font-size: 1.1rem; line-height: 1.4; margin-bottom: 15px; }
-        .date-line { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); }
         .venue-name { font-size: 1.4rem; font-weight: 700; color: var(--rose-prestige); margin-top: 5px; display: block; }
         .address-text { font-style: italic; font-size: 1rem; color: var(--text-gray); }
 
-        .event-card { background-color: rgba(255, 255, 255, 0.95); border: 1px solid var(--line-color); padding: 30px 15px; margin: 20px 0; width: 100%; position: relative; overflow: hidden; background-image: url('droite.JPG'); background-repeat: no-repeat; background-position: bottom right; background-size: 120px; }
+        .event-card { background-color: rgba(255, 255, 255, 0.95); border: 1px solid var(--line-color); padding: 35px 20px; margin: 25px 0; width: 100%; position: relative; overflow: hidden; background-image: url('droite.JPG'); background-repeat: no-repeat; background-position: bottom right; background-size: 130px; }
         .event-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.85); z-index: 1; }
         .event-card > * { position: relative; z-index: 2; }
 
-        /* --- TAILLE DES IMAGES HARMONISÉE --- */
+        /* --- TAILLE DES ICONES HARMONISÉE --- */
         .illust-icon { width: 120px; height: auto; margin: 0 auto 15px; display: block; }
         
         .action-btns { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
         .btn-mini { text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--rose-prestige); border: 1px solid var(--rose-prestige); padding: 8px 12px; border-radius: 4px; transition: 0.3s; background: transparent; cursor: pointer; }
 
         .family-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 25px; text-align: center; border-bottom: 1px solid var(--line-color); padding-bottom: 20px; }
-        .memorial-card { background-color: rgba(255, 255, 255, 0.8); padding: 30px 20px; margin-top: 20px; font-style: italic; }
+        .family-col h3 { font-family: 'Great Vibes', cursive; color: var(--rose-prestige); font-size: 1.5rem; margin-bottom: 10px; font-weight: normal; }
+        .family-col p { font-size: 0.85rem; margin: 3px 0; line-height: 1.3; }
 
-        .btn-action { background: var(--text-dark); color: white; border: none; padding: 16px; width: 100%; text-transform: uppercase; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .memorial-card { background-color: rgba(255, 255, 255, 0.8); padding: 30px 20px; margin-top: 25px; border-radius: 4px; font-style: italic; font-size: 1.1rem; line-height: 1.5; }
 
-        @media (max-width: 480px) {
-            .illust-icon { width: 100px; }
-        }
+        .btn-action { background: var(--text-dark); color: white; border: none; padding: 18px; width: 100%; text-transform: uppercase; font-weight: 700; cursor: pointer; letter-spacing: 2px; transition: 0.3s; margin-top: 15px; }
+
+        @media (max-width: 480px) { .illust-icon { width: 110px; } .family-grid { flex-direction: column; gap: 20px; } }
     </style>
 </head>
 <body>
@@ -74,7 +72,7 @@
 <div class="page-wrapper" id="accueil">
     <div class="main-frame">
         <img src="logo.png" alt="Logo" style="width: 70px;">
-        <h1 class="names-inline" style="font-size: clamp(3.2rem, 12vw, 5.5rem);">Eva & Samuel</h1>
+        <h1 class="names-inline" style="font-size: clamp(3.2rem, 12vw, 5rem);">Eva & Samuel</h1>
         <img src="nez.JPG" alt="Eva & Samuel" class="hero-photo">
 
         <div class="event-card" id="mairie">
@@ -82,35 +80,65 @@
             <h2 class="section-title">Cérémonie Civile</h2>
             <div class="names-inline">Eva & Samuel</div>
             <span class="sub-text">Se diront « oui »</span>
-            <div class="date-block">
-                <span class="date-line">Mercredi 6 Mai 2026</span><br>
-                <span>à 14h30 précises</span>
+            
+            <div style="font-size: 1.2rem; margin-bottom: 15px;">
+                <strong>Mercredi 6 Mai 2026</strong><br>à 14h30 précises
             </div>
+
             <span class="venue-name">Mairie de Sarcelles</span>
             <span class="address-text">3 rue de la Résistance, 95200 Sarcelles</span>
+
             <div class="action-btns">
-                <a href="https://waze.com/ul?q=Mairie+de+Sarcelles+3+rue+de+la+resistance+95200+Sarcelles" target="_blank" class="btn-mini">Waze</a>
+                <a href="https://waze.com/ul?q=Mairie+de+Sarcelles+3+rue+de+la+resistance+95200+Sarcelles" target="_blank" class="btn-mini">Itinéraire Waze</a>
+                <button onclick="downloadICS('Mariage Eva & Samuel - Mairie', 'Cérémonie civile', 'Mairie de Sarcelles', '20260506T143000', '20260506T160000')" class="btn-mini">Calendrier</button>
+            </div>
+
+            <div style="margin-top: 30px; border-top: 1px dashed var(--line-color); padding-top: 20px;">
+                <span class="sub-text" style="font-size: 1rem;">Un vin d'honneur suivra au :</span>
+                <span class="venue-name">Centre Bérechit</span>
+                <span class="address-text">74 Avenue Paul Valéry, 95200 Sarcelles</span>
+                <div class="action-btns">
+                    <a href="https://waze.com/ul?q=Centre+Berechit+74+Avenue+Paul+Valery+95200+Sarcelles" target="_blank" class="btn-mini">Itinéraire Waze</a>
+                </div>
             </div>
         </div>
 
         <div class="event-card" id="houppa">
             <img src="baguess.png" alt="Alliances" class="illust-icon">
-            <img src="hebreu.png" alt="Bénédiction" style="width: 100%; max-width: 350px; margin-bottom: 20px;">
+            <img src="hebreu.png" alt="Bénédiction" style="width: 100%; max-width: 380px; margin-bottom: 25px;">
+
             <div class="family-grid">
-                <div style="flex:1;"><h3>Famille Kala</h3><p>Mme Jacqueline Levy</p><p>Mme Huguette Soulat</p></div>
-                <div style="flex:1;"><h3>Famille Hatan</h3><p>Mme Simone Msika</p><p>M. & Mme Georges Uzan</p></div>
+                <div class="family-col">
+                    <h3>Famille de la Kala</h3>
+                    <p>Mme Jacqueline Levy</p>
+                    <p>Mme Huguette Soulat</p>
+                    <p style="margin-top:10px;">M. & Mme Stéphane Levy</p>
+                </div>
+                <div class="family-col">
+                    <h3>Famille du Hatan</h3>
+                    <p>Mme Simone Msika</p>
+                    <div style="height: 15px;"></div>
+                    <p>M. & Mme Georges Uzan</p>
+                </div>
             </div>
+
             <div class="names-inline">Eva & Samuel</div>
             <div class="names-hebrew">הוה & שמואל</div>
-            <div class="date-block">
-                <span class="date-line">Mardi 12 Mai 2026</span><br>
-                <span>à 17h30</span>
+            
+            <p style="font-style: italic; margin-bottom: 20px; font-size: 1.1rem;">Ont l’immense joie de vous faire part de leur Houppa</p>
+
+            <div style="font-size: 1.2rem; margin-bottom: 15px;">
+                <strong>Mardi 12 Mai 2026</strong><br>à 17h30
             </div>
+
             <span class="venue-name">Le White</span>
             <span class="address-text">68 rue Louis Ampère, 93330 Neuilly sur Marne</span>
+
             <div class="action-btns">
-                <a href="https://waze.com/ul?q=Le+White+68+rue+Louis+Ampere+93330+Neuilly+sur+Marne" target="_blank" class="btn-mini">Waze</a>
+                <a href="https://waze.com/ul?q=Le+White+68+rue+Louis+Ampere+93330+Neuilly+sur+Marne" target="_blank" class="btn-mini">Itinéraire Waze</a>
+                <button onclick="downloadICS('Mariage Eva & Samuel - Houppa', 'Houppa & Soirée', 'Le White', '20260512T173000', '20260513T040000')" class="btn-mini">Calendrier</button>
             </div>
+
             <div class="memorial-card">
                 <p>Une pensée émue pour nos grands-parents. Que leurs bénédictions illuminent notre vie.</p>
             </div>
@@ -118,21 +146,41 @@
 
         <img src="verre.JPG" alt="Célébration" class="section-photo">
 
-        <div class="event-card" id="rsvp">
-            <h2 class="section-title">Confirmation</h2>
-            <form>
-                <input type="text" placeholder="Nom & Prénom" style="width:100%; padding:12px; margin-bottom:10px; border:1px solid #ddd;">
-                <select style="width:100%; padding:12px; margin-bottom:10px; border:1px solid #ddd;">
-                    <option>Présence Mairie ?</option><option>OUI</option><option>NON</option>
+        <div class="event-card" id="rsvp" style="text-align: left;">
+            <h2 class="section-title" style="text-align: center;">Confirmation</h2>
+            <form id="rsvpForm">
+                <input type="text" name="nom" required placeholder="Nom & Prénom" style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; font-family: inherit;">
+                <select name="pres_m" required style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; font-family: inherit;">
+                    <option value="" disabled selected>Présence Mairie & Vin d'honneur ?</option>
+                    <option value="oui">OUI</option>
+                    <option value="non">NON</option>
                 </select>
-                <select style="width:100%; padding:12px; margin-bottom:20px; border:1px solid #ddd;">
-                    <option>Présence Houppa ?</option><option>OUI</option><option>NON</option>
+                <select name="pres_h" required style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; font-family: inherit;">
+                    <option value="" disabled selected>Présence Houppa & Soirée ?</option>
+                    <option value="oui">OUI</option>
+                    <option value="non">NON</option>
                 </select>
-                <button type="submit" class="btn-action">Envoyer</button>
+                <button type="submit" class="btn-action">Envoyer ma réponse</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    function downloadICS(title, description, location, startTime, endTime) {
+        const icsData = [
+            "BEGIN:VCALENDAR", "VERSION:2.0", "BEGIN:VEVENT",
+            "DTSTART:" + startTime, "DTEND:" + endTime,
+            "SUMMARY:" + title, "DESCRIPTION:" + description,
+            "LOCATION:" + location, "END:VEVENT", "END:VCALENDAR"
+        ].join("\r\n");
+        const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.setAttribute("download", title + ".ics");
+        link.click();
+    }
+</script>
 
 </body>
 </html>
