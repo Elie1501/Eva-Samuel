@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
     <title>Invitation - Eva & Samuel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;700&family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --rose-prestige: #d4a5a5;
@@ -33,11 +33,10 @@
         .page-wrapper { position: relative; z-index: 10; padding: 80px 10px 40px 10px; display: flex; flex-direction: column; align-items: center; }
         .main-frame { width: 100%; max-width: 600px; text-align: center; }
 
-        /* REGLAGE HOMOGÈNE DES NOMS */
         .names-couple-container {
             display: flex;
             justify-content: center;
-            align-items: center; /* Centrage vertical parfait de l'esperluette */
+            align-items: center;
             gap: 10px;
             margin: 10px 0;
         }
@@ -45,7 +44,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex: 1; /* Distribue l'espace équitablement */
+            flex: 1;
         }
         .name-french {
             font-family: 'Great Vibes', cursive;
@@ -54,20 +53,23 @@
             line-height: 1;
             margin: 0;
         }
+        
+        /* MISE À JOUR DE LA POLICE ICI */
         .name-hebrew-sub {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Frank Ruhl Libre', serif;
             color: var(--rose-fonce);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
             margin-top: 5px;
-            min-height: 1.5rem; /* Réserve l'espace même à la mairie */
+            min-height: 1.5rem;
         }
+
         .ampersand {
             font-family: 'Great Vibes', cursive;
             color: var(--rose-prestige);
             font-size: 2rem;
             line-height: 1;
-            padding-bottom: 20px; /* Aligne l'esperluette au niveau des prénoms et non des sous-titres */
+            padding-bottom: 20px;
         }
 
         .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dark); margin-bottom: 5px; }
@@ -91,20 +93,8 @@
         }
         .btn-mini:hover { background: var(--rose-prestige); color: white; }
 
-        /* ILLUSTRATIONS SERRÉES ET HOMOGÈNES */
-        .illust-voiture {
-            width: 120px;
-            height: auto;
-            margin: 5px auto;
-            display: block;
-        }
-        .illust-bagues {
-            width: 90px;
-            height: auto;
-            margin: 5px auto;
-            display: block;
-        }
-
+        .illust-voiture { width: 120px; height: auto; margin: 5px auto; display: block; }
+        .illust-bagues { width: 90px; height: auto; margin: 5px auto; display: block; }
         .hebreu-img { width: 100%; max-width: 380px; margin: 0 auto 10px; display: block; filter: sepia(0.2); }
 
         .family-grid {
