@@ -35,10 +35,10 @@
         .date-line { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); }
         .venue-name { font-size: 1.4rem; font-weight: 700; color: var(--rose-prestige); margin-top: 5px; display: block; }
         .address-text { font-style: italic; font-size: 1rem; color: var(--text-gray); }
+        .highlight-text { font-size: 0.95rem; color: var(--rose-prestige); font-style: italic; margin-top: 10px; display: block; }
 
         .event-card { background-color: rgba(255, 255, 255, 0.95); border: 1px solid var(--line-color); padding: 30px 15px; margin: 20px 0; width: 100%; position: relative; }
 
-        /* Style pour l'image Hébreu */
         .hebreu-img { width: 100%; max-width: 400px; margin: 0 auto 20px; display: block; filter: sepia(0.2); }
 
         .family-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 25px; text-align: center; border-bottom: 1px solid var(--line-color); padding-bottom: 20px; }
@@ -83,6 +83,10 @@
             <div class="info-block">
                 <span class="venue-name">Mairie de Sarcelles</span>
                 <span class="address-text">3 rue de la Résistance, 95200 Sarcelles</span>
+                
+                <span class="highlight-text">Un vin d'honneur suivra la cérémonie au :</span>
+                <span class="venue-name" style="font-size: 1.2rem;">Centre Bérechit</span>
+                <span class="address-text">74 Avenue Paul Valéry, 95200 Sarcelles</span>
             </div>
         </div>
 
@@ -103,7 +107,7 @@
                 <div class="family-col">
                     <h3>Famille du Hatan</h3>
                     <span class="family-label">Parents</span>
-                    <p>Corrine et Georges Uzan</p>
+                    <p>Corinne et Georges Uzan</p>
                     <span class="family-label">Grand-mère</span>
                     <p>Simone Msika</p>
                     <span class="family-label" style="opacity: 0.7;">En mémoire de</span>
@@ -134,22 +138,25 @@
             <h2 class="section-title" style="text-align: center; font-size: 1.6rem;">Confirmation</h2>
             <form id="rsvpForm">
                 <input type="text" name="nom" required placeholder="Nom & Prénom" style="margin-bottom:15px; width:100%; padding:12px; border:1px solid #ddd;">
+                
                 <select name="pres_m" id="pres_m" onchange="toggleM()" required style="margin-bottom:15px; width:100%; padding:12px; border:1px solid #ddd;">
-                    <option value="" disabled selected>Présence Mairie ?</option>
+                    <option value="" disabled selected>Présence Mairie & Vin d'honneur ?</option>
                     <option value="oui">OUI</option>
                     <option value="non">NON</option>
                 </select>
                 <div id="sec_m" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 10px;">
-                    <input type="number" name="ad_m" min="1" value="1" placeholder="Nombre d'adultes">
+                    <input type="number" name="ad_m" min="1" value="1" placeholder="Nombre d'adultes" style="width:100%; padding:10px;">
                 </div>
+
                 <select name="pres_h" id="pres_h" onchange="toggleH()" required style="margin-bottom:15px; width:100%; padding:12px; border:1px solid #ddd;">
-                    <option value="" disabled selected>Présence Houppa ?</option>
+                    <option value="" disabled selected>Présence Houppa & Soirée ?</option>
                     <option value="oui">OUI</option>
                     <option value="non">NON</option>
                 </select>
                 <div id="sec_h" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 10px;">
-                    <input type="number" name="ad_h" min="1" value="1" placeholder="Nombre d'adultes">
+                    <input type="number" name="ad_h" min="1" value="1" placeholder="Nombre d'adultes" style="width:100%; padding:10px;">
                 </div>
+
                 <button type="submit" id="subBtn" class="btn-action">Envoyer ma réponse</button>
             </form>
         </div>
