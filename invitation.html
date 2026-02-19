@@ -209,22 +209,27 @@
             <span class="rsvp-deadline">Réponse souhaitée avant le 1er Avril 2026</span>
             <form id="rsvpForm">
                 <input type="text" name="nom" required placeholder="Nom & Prénom" class="form-input">
+
                 <select name="pres_m" id="pres_m" onchange="toggleM()" required class="form-input">
                     <option value="" disabled selected>Présence Mairie & Vin d'honneur ?</option>
                     <option value="oui">OUI</option>
                     <option value="non">NON</option>
                 </select>
+
                 <div id="sec_m" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 10px; border-left: 2px solid var(--rose-prestige);">
-                    <input type="number" name="nb_m" min="1" placeholder="Nombre de personnes" class="form-input" style="margin-bottom:0;">
+                    <input type="number" name="nb_m" min="1" max="2" oninput="if(parseInt(value) > 2) value = 2;" placeholder="Nombre de personnes " class="form-input" style="margin-bottom:0;">
                 </div>
+
                 <select name="pres_h" id="pres_h" onchange="toggleH()" required class="form-input">
                     <option value="" disabled selected>Présence Houppa & Soirée ?</option>
                     <option value="oui">OUI</option>
                     <option value="non">NON</option>
                 </select>
+
                 <div id="sec_h" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 10px; border-left: 2px solid var(--rose-prestige);">
-                    <input type="number" name="nb_h" min="1" placeholder="Nombre de personnes" class="form-input" style="margin-bottom:0;">
+                    <input type="number" name="nb_h" min="1" max="2" oninput="if(parseInt(value) > 2) value = 2;" placeholder="Nombre de personnes " class="form-input" style="margin-bottom:0;">
                 </div>
+
                 <div class="message-box">
                     <label>Un petit mot pour nous...</label>
                     <textarea name="message" placeholder="Votre message ici..."></textarea>
@@ -245,7 +250,6 @@
     const statusText = document.getElementById('statusText');
     let hasStarted = false;
 
-    // Fonction pour lancer la musique à 10s
     function startAudio() {
         if (!hasStarted) {
             music.currentTime = 10;
@@ -253,7 +257,7 @@
                 hasStarted = true;
                 updateUI(true);
             }).catch(e => {
-                console.log("Lecture auto en attente d'interaction réelle");
+                console.log("Lecture auto en attente d'interaction");
             });
         }
     }
@@ -268,12 +272,10 @@
         }
     }
 
-    // Écouteurs d'événements pour déclencher dès que possible
     window.addEventListener('scroll', startAudio, { once: true });
     document.addEventListener('touchstart', startAudio, { once: true });
     document.addEventListener('mousedown', startAudio, { once: true });
 
-    // Contrôle manuel au clic sur le bouton
     musicBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (!hasStarted) {
