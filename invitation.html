@@ -77,7 +77,7 @@
 
         .rsvp-deadline { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--rose-prestige); font-style: italic; text-align: center; display: block; margin-bottom: 15px; font-weight: 600; }
 
-        /* DESIGN DU LECTEUR AUDIO MODERNISÉ */
+        /* DESIGN DU LECTEUR AUDIO */
         .music-control {
             position: fixed; bottom: 25px; right: 25px; z-index: 2000;
             background: rgba(255, 255, 255, 0.9); border: 1.5px solid var(--rose-prestige);
@@ -99,7 +99,7 @@
 
 <div id="fixed-bg"></div>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
     <source src="Lyrics.mp3" type="audio/mpeg">
 </audio>
 
@@ -239,23 +239,22 @@
     function toggleM() { document.getElementById('sec_m').style.display = (document.getElementById('pres_m').value === 'oui') ? 'block' : 'none'; }
     function toggleH() { document.getElementById('sec_h').style.display = (document.getElementById('pres_h').value === 'oui') ? 'block' : 'none'; }
 
-    // SCRIPT AUDIO OPTIMISÉ
     const music = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicBtn');
     const barContainer = document.getElementById('barContainer');
     const statusText = document.getElementById('statusText');
-    let hasPlayed = false;
+    let hasStarted = false;
 
+    // Fonction pour lancer la musique à 10s
     function startAudio() {
-        if(!hasPlayed) {
+        if (!hasStarted) {
             music.currentTime = 10;
-            let playPromise = music.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    updateUI(true);
-                    hasPlayed = true;
-                }).catch(e => console.log("Auto-play bloqué"));
-            }
+            music.play().then(() => {
+                hasStarted = true;
+                updateUI(true);
+            }).catch(e => {
+                console.log("Lecture auto en attente d'interaction réelle");
+            });
         }
     }
 
@@ -269,15 +268,20 @@
         }
     }
 
-    // Déclencheurs globaux (nécessaires pour bypasser les restrictions navigateurs)
-    document.addEventListener('click', startAudio, { once: true });
+    // Écouteurs d'événements pour déclencher dès que possible
     window.addEventListener('scroll', startAudio, { once: true });
     document.addEventListener('touchstart', startAudio, { once: true });
+    document.addEventListener('mousedown', startAudio, { once: true });
 
-    // Contrôle manuel
+    // Contrôle manuel au clic sur le bouton
     musicBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (music.paused) {
+        if (!hasStarted) {
+            music.currentTime = 10;
+            music.play();
+            hasStarted = true;
+            updateUI(true);
+        } else if (music.paused) {
             music.play();
             updateUI(true);
         } else {
