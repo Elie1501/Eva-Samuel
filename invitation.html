@@ -33,6 +33,26 @@
         .page-wrapper { position: relative; z-index: 10; padding: 80px 10px 40px 10px; display: flex; flex-direction: column; align-items: center; }
         .main-frame { width: 100%; max-width: 600px; text-align: center; }
 
+        /* Styles spécifiques aux boutons 1/2 */
+        .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+        .btn-select {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--rose-prestige);
+            background: white;
+            color: var(--rose-prestige);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .btn-select.active {
+            background: var(--rose-prestige);
+            color: white;
+        }
+
         .names-couple-container { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 10px 0 -10px; }
         .name-block { display: flex; flex-direction: column; align-items: center; flex: 1; }
         .name-french { font-family: 'Great Vibes', cursive; color: var(--rose-prestige); font-size: clamp(2rem, 8vw, 2.8rem); line-height: 1; margin: 0; }
@@ -77,7 +97,6 @@
 
         .rsvp-deadline { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--rose-prestige); font-style: italic; text-align: center; display: block; margin-bottom: 15px; font-weight: 600; }
 
-        /* DESIGN DU LECTEUR AUDIO */
         .music-control {
             position: fixed; bottom: 25px; right: 25px; z-index: 2000;
             background: rgba(255, 255, 255, 0.9); border: 1.5px solid var(--rose-prestige);
@@ -85,7 +104,6 @@
             box-shadow: 0 8px 25px rgba(212, 165, 165, 0.3); cursor: pointer; backdrop-filter: blur(8px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .music-control:hover { transform: translateY(-5px); }
         .music-bars { display: flex; align-items: flex-end; gap: 2px; height: 15px; }
         .bar { width: 3px; background: var(--rose-prestige); height: 3px; border-radius: 2px; transition: height 0.3s ease; }
         .playing .bar { animation: bounce 1s ease-in-out infinite alternate; }
@@ -216,8 +234,13 @@
                     <option value="non">NON</option>
                 </select>
 
-                <div id="sec_m" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 10px; border-left: 2px solid var(--rose-prestige);">
-                    <input type="number" name="nb_m" min="1" max="2" oninput="if(parseInt(value) > 2) value = 2;" placeholder="Nombre de personnes " class="form-input" style="margin-bottom:0;">
+                <div id="sec_m" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 15px; border-left: 2px solid var(--rose-prestige);">
+                    <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: var(--text-gray); text-align: center;">Nombre de personnes :</p>
+                    <div class="btn-group">
+                        <button type="button" class="btn-select" onclick="selectNb(this, '1', 'nb_m')">1</button>
+                        <button type="button" class="btn-select" onclick="selectNb(this, '2', 'nb_m')">2</button>
+                    </div>
+                    <input type="hidden" name="nb_m" id="nb_m" value="">
                 </div>
 
                 <select name="pres_h" id="pres_h" onchange="toggleH()" required class="form-input">
@@ -226,8 +249,13 @@
                     <option value="non">NON</option>
                 </select>
 
-                <div id="sec_h" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 10px; border-left: 2px solid var(--rose-prestige);">
-                    <input type="number" name="nb_h" min="1" max="2" oninput="if(parseInt(value) > 2) value = 2;" placeholder="Nombre de personnes " class="form-input" style="margin-bottom:0;">
+                <div id="sec_h" style="display:none; margin-bottom: 15px; background: #fdfaf6; padding: 15px; border-left: 2px solid var(--rose-prestige);">
+                    <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: var(--text-gray); text-align: center;">Nombre de personnes :</p>
+                    <div class="btn-group">
+                        <button type="button" class="btn-select" onclick="selectNb(this, '1', 'nb_h')">1</button>
+                        <button type="button" class="btn-select" onclick="selectNb(this, '2', 'nb_h')">2</button>
+                    </div>
+                    <input type="hidden" name="nb_h" id="nb_h" value="">
                 </div>
 
                 <div class="message-box">
@@ -241,26 +269,25 @@
 </div>
 
 <script>
+    // --- GESTION DES CHAMPS ---
     function toggleM() { document.getElementById('sec_m').style.display = (document.getElementById('pres_m').value === 'oui') ? 'block' : 'none'; }
     function toggleH() { document.getElementById('sec_h').style.display = (document.getElementById('pres_h').value === 'oui') ? 'block' : 'none'; }
 
+    // --- SELECTION NOMBRE PERSONNES ---
+    function selectNb(btn, value, inputId) {
+        const group = btn.parentElement;
+        const buttons = group.querySelectorAll('.btn-select');
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(inputId).value = value;
+    }
+
+    // --- GESTION MUSIQUE ---
     const music = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicBtn');
     const barContainer = document.getElementById('barContainer');
     const statusText = document.getElementById('statusText');
     let hasStarted = false;
-
-    function startAudio() {
-        if (!hasStarted) {
-            music.currentTime = 10;
-            music.play().then(() => {
-                hasStarted = true;
-                updateUI(true);
-            }).catch(e => {
-                console.log("Lecture auto en attente d'interaction");
-            });
-        }
-    }
 
     function updateUI(isPlaying) {
         if(isPlaying) {
@@ -272,24 +299,71 @@
         }
     }
 
-    window.addEventListener('scroll', startAudio, { once: true });
-    document.addEventListener('touchstart', startAudio, { once: true });
-    document.addEventListener('mousedown', startAudio, { once: true });
-
-    musicBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
+    function startAudio() {
         if (!hasStarted) {
             music.currentTime = 10;
-            music.play();
-            hasStarted = true;
-            updateUI(true);
-        } else if (music.paused) {
-            music.play();
-            updateUI(true);
-        } else {
-            music.pause();
-            updateUI(false);
+            music.play().then(() => { hasStarted = true; updateUI(true); }).catch(() => {});
         }
+    }
+
+    window.addEventListener('scroll', startAudio, { once: true });
+    document.addEventListener('touchstart', startAudio, { once: true });
+    musicBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!hasStarted) { music.currentTime = 10; music.play(); hasStarted = true; updateUI(true); }
+        else if (music.paused) { music.play(); updateUI(true); }
+        else { music.pause(); updateUI(false); }
+    });
+
+    // --- ENVOI GOOGLE SHEET ---
+    const form = document.getElementById('rsvpForm');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz4SaGin6XVmz9-c7N0z2maZjvXY_Ui-656MGFLASCGWfMFQqUzLDBlkgqS8kTcNcQt/exec';
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        // Validation forcée des boutons 1/2
+        if (formData.get('pres_m') === 'oui' && !formData.get('nb_m')) {
+            alert("Veuillez sélectionner le nombre de personnes pour la mairie (1 ou 2).");
+            return;
+        }
+        if (formData.get('pres_h') === 'oui' && !formData.get('nb_h')) {
+            alert("Veuillez sélectionner le nombre de personnes pour la soirée (1 ou 2).");
+            return;
+        }
+
+        const btn = document.getElementById('subBtn');
+        btn.disabled = true;
+        btn.innerText = "Envoi en cours...";
+
+        // Correction automatique pour le "NON"
+        if (formData.get('pres_m') === 'non') formData.set('nb_m', '0');
+        if (formData.get('pres_h') === 'non') formData.set('nb_h', '0');
+
+        const params = new URLSearchParams(formData);
+
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: params.toString()
+        })
+            .then(() => {
+                alert("Merci ! Votre réponse a bien été enregistrée.");
+                btn.innerText = "Envoyé !";
+                form.reset();
+                // Reset boutons visuels
+                document.querySelectorAll('.btn-select').forEach(b => b.classList.remove('active'));
+                document.getElementById('sec_m').style.display = 'none';
+                document.getElementById('sec_h').style.display = 'none';
+            })
+            .catch(error => {
+                alert("Erreur réseau. Réessayez.");
+                btn.disabled = false;
+                btn.innerText = "Envoyer ma réponse";
+            });
     });
 
     function handleCalendar(type, start, end, loc) {
@@ -302,9 +376,7 @@
             link.href = window.URL.createObjectURL(blob); link.setAttribute("download", title + ".ics");
             document.body.appendChild(link); link.click(); document.body.removeChild(link);
         } else {
-            const gStart = start + "Z"; const gEnd = end + "Z";
-            const gUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${gStart}/${gEnd}&location=${encodeURIComponent(loc)}`;
-            window.open(gUrl, '_blank');
+            window.open(`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${start}Z/${end}Z&location=${encodeURIComponent(loc)}`, '_blank');
         }
     }
 </script>
